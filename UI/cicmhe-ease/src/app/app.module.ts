@@ -6,11 +6,20 @@ import { QueryComponent } from './query/query.component';
 import { ResultsComponent } from './results/results.component';
 import { SearchHistoryComponent } from './search-history/search-history.component';
 import { FacetsComponent } from './facets/facets.component';
+import { ToggleComponent } from './toggle/toggle.component';
 
 import {MatCardModule} from '@angular/material/card';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatOptionModule} from '@angular/material/';
+import {MatSelectModule} from '@angular/material/select';
+import {MatListModule} from '@angular/material/list'
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http'; 
+
 
 
 @NgModule({
@@ -19,14 +28,22 @@ import {MatButtonModule} from '@angular/material/button';
     QueryComponent,
     ResultsComponent,
     SearchHistoryComponent,
-    FacetsComponent
+    FacetsComponent,
+    ToggleComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    MatGridListModule,
+    MatListModule,
+    MatOptionModule,
+    MatSelectModule,
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

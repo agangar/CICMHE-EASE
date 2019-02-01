@@ -1,7 +1,14 @@
 <div class="container">
   <p>Materials Handling Activities Solutions</p>
   <mat-card>
-    <input  placeholder="Enter Keywords">
-    <button mat-button><b>Search</b></button>
+      <mat-form-field>
+          <mat-select placeholder="Type of Equipment">
+            <mat-option *ngFor="let types of filters" [value]="types">
+              {{types}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+    <!---<input matInput type="text" placeholder="Enter Keywords" [(ngModel)]="queryText" (keypress)="handleEnter($event.keyCode)">-->
+    <button (click)="search()" mat-button><b>Search</b></button>
   </mat-card>
 </div>

@@ -1,3 +1,5 @@
-<p>
-  facets works!
-</p>
+<mat-selection-list #shoes>
+    <mat-list-option *ngFor="let types of filters">
+      {{types}}
+    </mat-list-option>
+  </mat-selection-list>

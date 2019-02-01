@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 
 @Component({
   selector: 'app-query',
@@ -6,10 +6,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./query.component.css']
 })
 export class QueryComponent implements OnInit {
-
-  constructor() { }
-
+  
+  @Input() filters:any;
+  @Output() queryEmittor : EventEmitter<any> = new EventEmitter<any>(); 
+ 
+  queryText:string = '';
+  
+  
   ngOnInit() {
+    console.log(this.filters);
   }
 
+
+  public search() : void{
+    this.queryEmittor.emit(this.queryText);
+  }
+
+  public handleEnter(keyCode: number) : void{
+    if(keyCode == 13){
+      this.search();
+    }
+  }
 }

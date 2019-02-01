@@ -18,4 +18,20 @@ export class APICallsService {
 
     return this.httpClient.get(URL, {headers, params});
   }
+
+  public loadFilters(){
+    var URL = apiURL + "filters";
+    let headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+    let params = new HttpParams();
+    return this.httpClient.get(URL, {headers, params});
+  }
+
+  public productList(){
+    var URL = apiURL + "allproducts";
+    let headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+    let params = new HttpParams();
+    return this.httpClient.get(URL, {headers, params});
+  }
 }
