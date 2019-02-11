@@ -6,6 +6,9 @@
     padding-top : 5%;
 }
 
+img{
+    width:100%;
+}
 .grid-container{
     display: grid;
     grid-template-columns: 70% 30%;
@@ -17,7 +20,17 @@
     
 }
 
+h4{
+
+    color: white;
+}
+
+.results-display{
+    background:#1e88e5;
+}
 .item{
+    grid-column-start: 2;
+    grid-column-end: 3;
     border: solid darkgrey 3px;
     height: 500px;
     OVERFLOW-Y:scroll;
@@ -26,6 +39,5 @@
 .item-1{
     grid-row-start: 1;
     grid-row-end: 3;
-    height: 1000px;
     OVERFLOW-Y:scroll;
 }

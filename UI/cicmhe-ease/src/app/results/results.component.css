@@ -4,10 +4,13 @@ mat-grid-tile{
     width:50%;
 }
 video{
-    height:200px;
-    width: 200px
+    height:70%;
+    width: 80%;
+    align-content:center;
 }
 img{
-    height:200px;
-    width: 200px
+    height:70%;
+    width: 80%;
+    
+    align-content:center;
 }

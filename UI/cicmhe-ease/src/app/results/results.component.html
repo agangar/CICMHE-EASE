@@ -1,20 +1,30 @@
-
 <div>
-<mat-grid-list cols="2" rowHeight="2:1">
-    <mat-grid-tile *ngFor="let x of apiResponse" >
-        <div class="media" *ngIf="x.fileType == 'mp4' || x.fileType == 'mkv' ||  x.fileType =='mov' ||  x.fileType =='flv' || x.fileType =='wmv'">
-            <video controls (click)="toggleVideo()"  id="videoPlayer">
-                    <source src="http://localhost:8081/Data/{{x.company}}/{{x.assetID}}.{{x.fileType}}" type="video/mp4" />
-                    </video>
-                </div>
-                <div class="media" *ngIf="x.fileType != 'mp4' && x.fileType != 'mkv' &&  x.fileType !='mov' &&  x.fileType !='flv' &&  x.fileType !='wmv'">
-                    <img src="http://localhost:8081/Data/{{x.company}}/{{x.assetID}}.{{x.fileType}}">
-                </div>
-         
-         <br>
-        <div>{{x.fileType}}<br>{{ x.description}}<br>{{ x.company}}</div>
- 
+    <mat-grid-list cols="2">
+        <mat-grid-tile *ngFor="let x of apiResponse">
+            <div class="container">
+                <div class="row">
 
-</mat-grid-tile>
-</mat-grid-list>
+                    <div class="media"
+                        *ngIf="x.fileType == 'mp4' || x.fileType == 'mkv' ||  x.fileType =='mov' ||  x.fileType =='flv' || x.fileType =='wmv'">
+                        <video controls (click)="toggleVideo()" id="videoPlayer">
+                            <source src="http://localhost:8081/Data/{{x.company}}/{{x.assetID}}.{{x.fileType}}"
+                                type="video/mp4" />
+                        </video>
+                    </div>
+                    <div class="media"
+                        *ngIf="x.fileType != 'mp4' && x.fileType != 'mkv' &&  x.fileType !='mov' &&  x.fileType !='flv' &&  x.fileType !='wmv'">
+                        <img src="http://localhost:8081/Data/{{x.company}}/{{x.assetID}}.{{x.fileType}}">
+                    </div>
+                </div>
+                <div class="row">
+                    {{x.productName}}
+                </div>
+
+                <div class="row">
+                    {{x.description}}
+                </div>
+            </div>
+
+        </mat-grid-tile>
+    </mat-grid-list>
 </div>

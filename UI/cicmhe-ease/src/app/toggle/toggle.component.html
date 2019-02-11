@@ -1,20 +1,26 @@
 <div class="container">
-  <app-query [filters]="filters"  *ngIf="filterAvailable" (queryEmittor)="onInputs($event)" >  </app-query>
+  <div>
+    <img src="http://localhost:8081/MHIbar.png">
+  </div>
+  <app-query [filters]="filters" *ngIf="filterAvailable" (queryEmittor)="onInputs($event)"> </app-query>
 
-  <div class="grid-container" *ngIf="resultsAvailable" >
+  <div class="grid-container" *ngIf="resultsAvailable">
     <div class="item-1 app-results" *ngIf="(resultsAvailable && productSearchResultsAvailable)">
-        <app-results [apiResponse]="apiResponse" [resultsAvailable]="resultsAvailable"></app-results>
+      <app-results [apiResponse]="apiResponse" [resultsAvailable]="resultsAvailable"></app-results>
     </div>
-    
-    <div class="item app-search-history" >
-      <app-search-history [productList]="productList" [resultProducts]="resultProducts" *ngIf="(resultsAvailable && productListAvailable)" (productsEmitter)="onProducts($event)">  </app-search-history>
+
+    <div class="item app-search-history">
+      <div class="results-display">
+        <h4>Current Search</h4>
+      </div>
+      <app-search-history [productList]="productList" [resultProducts]="resultProducts"
+        *ngIf="(resultsAvailable && productListAvailable)" (productsEmitter)="onProducts($event)"> </app-search-history>
     </div>
-    
+
     <!-- <div class="item app-facets">
       <app-facets [filters]="filters" ></app-facets>
     </div>
      -->
   </div>
-  
-</div>
 
+</div>
