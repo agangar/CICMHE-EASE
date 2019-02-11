@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input,EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-search-history',
@@ -8,10 +8,17 @@ import { Component, OnInit, Input } from '@angular/core';
 export class SearchHistoryComponent implements OnInit {
 
   @Input() productList:any;
-  
+  @Input() resultProducts:any;
+  @Output() productsEmitter : EventEmitter<any> = new EventEmitter<any>(); 
+  selectedOptions : string[];
   constructor() { }
 
   ngOnInit() {
+    this.selectedOptions=this.resultProducts;
   }
 
+  onProductListChange(event){
+      console.log(event.length);
+  this.productsEmitter.emit(this.selectedOptions);
+  }
 }

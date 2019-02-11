@@ -4,7 +4,7 @@ mat-card{
     border: solid darkgrey 1px;
 }
 
-input{
+mat-form-field{
     width: 80%;
     padding: 0.5%;
     margin-left: 2%

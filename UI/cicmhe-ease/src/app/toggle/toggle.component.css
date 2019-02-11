@@ -2,25 +2,30 @@
     background-color: #eee;
     margin: 0px;
     max-width: 100%;
+    max-height: 100%;
     padding-top : 5%;
 }
 
 .grid-container{
     display: grid;
-    grid-template-columns: 75% 25%;
+    grid-template-columns: 70% 30%;
     grid-row-gap: 5%;
     grid-column-gap: 1%;
     padding-top: 4%;
-    margin-right: 22%;
-    margin-left: 15%;
+    margin-right: 5%;
+    margin-left: 5%;
     
 }
 
 .item{
     border: solid darkgrey 3px;
+    height: 500px;
+    OVERFLOW-Y:scroll;
 }
 
 .item-1{
     grid-row-start: 1;
     grid-row-end: 3;
+    height: 1000px;
+    OVERFLOW-Y:scroll;
 }

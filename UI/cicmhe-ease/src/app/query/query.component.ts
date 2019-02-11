@@ -10,7 +10,7 @@ export class QueryComponent implements OnInit {
   @Input() filters:any;
   @Output() queryEmittor : EventEmitter<any> = new EventEmitter<any>(); 
  
-  queryText:string = '';
+  query:string = '';
   
   
   ngOnInit() {
@@ -19,7 +19,8 @@ export class QueryComponent implements OnInit {
 
 
   public search() : void{
-    this.queryEmittor.emit(this.queryText);
+    console.log(this.query);
+    this.queryEmittor.emit(this.query);
   }
 
   public handleEnter(keyCode: number) : void{

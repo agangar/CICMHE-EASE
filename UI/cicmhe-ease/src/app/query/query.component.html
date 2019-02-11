@@ -2,7 +2,7 @@
   <p>Materials Handling Activities Solutions</p>
   <mat-card>
       <mat-form-field>
-          <mat-select placeholder="Type of Equipment">
+          <mat-select placeholder="Material Handling Application" [(value)]="query">
             <mat-option *ngFor="let types of filters" [value]="types">
               {{types}}
             </mat-option>

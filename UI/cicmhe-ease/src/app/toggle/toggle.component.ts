@@ -17,12 +17,15 @@ export class ToggleComponent {
   resultsAvailable : boolean = false;
   errorOccured : boolean = false;
   apiResponse:any = '';
+  resultProducts:any='';
   filters:any='';
   productList:any='';
   filterAvailable:boolean=false;
   productListAvailable:boolean=false;
+  productSearchResultsAvailable:boolean=true;
 
   ngOnInit(){
+    //Drop down population
       this.apiService.loadFilters().subscribe(
         response =>{
           this.filters = response;
@@ -35,6 +38,7 @@ export class ToggleComponent {
         }
       )
 
+//List of products
       this.apiService.productList().subscribe(
         response =>{
           this.productList = response;
@@ -45,17 +49,51 @@ export class ToggleComponent {
           console.log("Error : " + JSON.stringify(err));
         }
       )
-
-      
-
   }
+
+
+
+
+
+  //Drop down search
   public onInputs(inputQuery : string):void{
+    this.resultsAvailable=false;
+    this.searchInProgress=true;
     this.apiService.search(inputQuery).subscribe(
       response => { 
-        
+        this.apiResponse = response;
+    },
+    err => {
+      this.errorOccured = true;
+      this.searchInProgress = false;
+      this.resultsAvailable=false;
+      console.log("Error : " + JSON.stringify(err));
+    });
 
-        this.searchInProgress = false;
+  //checkbox products in results
+    this.apiService.resultProducts(inputQuery).subscribe(
+      response => { 
+        this.resultProducts = response;
         this.resultsAvailable = true;
+        this.searchInProgress = false;
+    },
+    err => {
+      console.log("Error : " + JSON.stringify(err));
+    });
+  }
+
+
+
+
+  //Search on product filter
+  public onProducts(selectedProducts:string[]):void{
+   
+    this.productSearchResultsAvailable=false;
+    this.searchInProgress = true;
+    this.apiService.searchProduct(selectedProducts,selectedProducts.length).subscribe(
+      response => { 
+        this.productSearchResultsAvailable=true;
+        this.searchInProgress = false;
         this.apiResponse = response;
         console.log(response);
         
@@ -63,8 +101,11 @@ export class ToggleComponent {
     err => {
       this.errorOccured = true;
       this.searchInProgress = false;
+      this.resultsAvailable=false;
       console.log("Error : " + JSON.stringify(err));
     });
+
   }
+
   
 }

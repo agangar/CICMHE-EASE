@@ -1,19 +1,19 @@
 <div class="container">
-  <app-query [filters]="filters"  *ngIf="filterAvailable" (queryEmittor)="onInputs($event)">  </app-query>
+  <app-query [filters]="filters"  *ngIf="filterAvailable" (queryEmittor)="onInputs($event)" >  </app-query>
 
   <div class="grid-container" *ngIf="resultsAvailable" >
-    <div class="item-1 app-results">
+    <div class="item-1 app-results" *ngIf="(resultsAvailable && productSearchResultsAvailable)">
         <app-results [apiResponse]="apiResponse" [resultsAvailable]="resultsAvailable"></app-results>
     </div>
     
     <div class="item app-search-history" >
-      <app-search-history [productList]="productList"  *ngIf="productListAvailable">  </app-search-history>
+      <app-search-history [productList]="productList" [resultProducts]="resultProducts" *ngIf="(resultsAvailable && productListAvailable)" (productsEmitter)="onProducts($event)">  </app-search-history>
     </div>
     
-    <div class="item app-facets">
+    <!-- <div class="item app-facets">
       <app-facets [filters]="filters" ></app-facets>
     </div>
-    
+     -->
   </div>
   
 </div>

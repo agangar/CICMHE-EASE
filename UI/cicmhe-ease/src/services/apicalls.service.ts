@@ -34,4 +34,26 @@ export class APICallsService {
     let params = new HttpParams();
     return this.httpClient.get(URL, {headers, params});
   }
+
+  public resultProducts(query : string){
+    var URL = apiURL + "resultProducts";
+    let headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+    let params = new HttpParams().set('query', query);
+
+    return this.httpClient.get(URL, {headers, params});
+  }
+
+  public searchProduct(query : string[], length: number){
+    var URL = apiURL + "productSearch";
+    let headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+    let params = new HttpParams();
+    params=params.set('length', length.toString());
+    let count=0;
+    for(let x of query)
+        params=params.set((count++).toString(),x);
+    return this.httpClient.get(URL, {headers, params});
+  }
+
 }

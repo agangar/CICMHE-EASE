@@ -1,0 +1,13 @@
+mat-grid-tile{
+    border: solid darkgrey 3px;
+    height:10%;
+    width:50%;
+}
+video{
+    height:200px;
+    width: 200px
+}
+img{
+    height:200px;
+    width: 200px
+}

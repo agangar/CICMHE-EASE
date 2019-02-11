@@ -7,6 +7,7 @@ import { ResultsComponent } from './results/results.component';
 import { SearchHistoryComponent } from './search-history/search-history.component';
 import { FacetsComponent } from './facets/facets.component';
 import { ToggleComponent } from './toggle/toggle.component';
+import {CommonModule} from '@angular/common';
 
 import {MatCardModule} from '@angular/material/card';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -43,7 +44,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatOptionModule,
     MatSelectModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
