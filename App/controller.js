@@ -72,10 +72,14 @@ router.get('/filters', (request, response)=>{
 		db.collection("matrix").findOne({}, function(err, result) {
     		if (err) throw err;
     		console.log(result);
+    		data.push("All Products");
     		for(key in result) {
-    			if(key!="_id" && key !="productName")
+    			if(key!="_id" && key !="productName"){
+    			console.log(key);
     			data.push(key);
     		}
+    		}
+    		data.sort();
     		console.log(JSON.stringify(data));
     		response.send(JSON.stringify(data));
  		 });
@@ -143,15 +147,14 @@ router.get('/productSearch*',(request,response) =>{
 		}
 		var db = database.db(constants.ease_db);
 		var length=request.query.length;
-		console.log(length);
-		console.log("HERE");
-		var s="0";
-	    console.log(request.query[s]);
-	    var filter=[];
+		var filter=[];
 		for(var i=0;i<length;i++)
 			filter.push(request.query[i.toString()]);
 		console.log(filter);
-			db.collection(constants.products_collection).find({productName: {$in: filter}},{ $sample: { size: 10 } }).toArray(function(error, x){
+			db.collection(constants.products_collection).aggregate([  
+        { $sample: {size: 10 } }, 
+        { $match:  {productName: {$in: filter}} } 
+      ]).toArray(function(error, x){
 			if(error) throw error;
 			console.log(x);
 			
@@ -162,4 +165,45 @@ router.get('/productSearch*',(request,response) =>{
 	});
 });
 
+router.get('/allProductSearch', (request, response)=>{
+
+	mongoClient.connect(constants.mongo_url, { useNewUrlParser: true }, (err, database) => {
+		if(err){
+			console.log('Error occured while trying to connect to database');
+			throw err;
+		}
+		var db = database.db(constants.ease_db);
+		
+		db.collection(constants.products_collection).aggregate([{'$sample': {'size': 10 }}]).toArray(function(err, result) {
+    		if (err) throw err;
+    		console.log(result);
+    		response.send(JSON.stringify(result));
+ 		 });
+		
+		database.close;
+		
+		
+	});
+});
+
+router.get('/companyList', (request, response)=>{
+
+	mongoClient.connect(constants.mongo_url, { useNewUrlParser: true }, (err, database) => {
+		if(err){
+			console.log('Error occured while trying to connect to database');
+			throw err;
+		}
+		var db = database.db(constants.ease_db);
+		
+		db.collection(constants.products_collection).distinct("company",function(err, result){
+    		if (err) throw err;
+    		result=result.sort();
+    		response.send(JSON.stringify(result));
+ 		 });
+		
+		database.close;
+		
+		
+	});
+});
 module.exports = router;

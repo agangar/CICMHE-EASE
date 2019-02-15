@@ -1,6 +1,6 @@
 <div class="containers">
-  <mat-selection-list #shoes>
-    <mat-list-option *ngFor="let types of filters">
+  <mat-selection-list [(ngModel)]="selectedOptions">
+    <mat-list-option *ngFor="let types of companyList" [value]="types">
       {{types}}
     </mat-list-option>
   </mat-selection-list>

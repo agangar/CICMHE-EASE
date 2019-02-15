@@ -17,6 +17,10 @@ export class SearchHistoryComponent implements OnInit {
     this.selectedOptions=this.resultProducts;
   }
 
+  public clear() : void{
+    this.selectedOptions=[];
+  }
+
   onProductListChange(event){
       console.log(event.length);
   this.productsEmitter.emit(this.selectedOptions);

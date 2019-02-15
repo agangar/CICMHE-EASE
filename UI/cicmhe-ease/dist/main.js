@@ -30,7 +30,7 @@ webpackEmptyAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = ".container{\r\n    height:1000px;\r\n}\r\n"
 
 /***/ }),
 
@@ -41,7 +41,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\r\n    <div class=\"item app-facets\">\r\n      <app-toggle></app-toggle>\r\n    </div>\r\n  \r\n</div>\r\n\r\n"
+module.exports = "<div class=\"container\">\r\n    <div class=\"item app-facets\">\r\n      <app-toggle></app-toggle>\r\n    </div>\r\n</div>\r\n\r\n"
 
 /***/ }),
 
@@ -99,23 +99,25 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _search_history_search_history_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./search-history/search-history.component */ "./src/app/search-history/search-history.component.ts");
 /* harmony import */ var _facets_facets_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./facets/facets.component */ "./src/app/facets/facets.component.ts");
 /* harmony import */ var _toggle_toggle_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./toggle/toggle.component */ "./src/app/toggle/toggle.component.ts");
-/* harmony import */ var _angular_material_card__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/material/card */ "./node_modules/@angular/material/esm5/card.es5.js");
-/* harmony import */ var _angular_material_form_field__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/material/form-field */ "./node_modules/@angular/material/esm5/form-field.es5.js");
-/* harmony import */ var _angular_material_input__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/material/input */ "./node_modules/@angular/material/esm5/input.es5.js");
-/* harmony import */ var _angular_material_button__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/material/button */ "./node_modules/@angular/material/esm5/button.es5.js");
-/* harmony import */ var _angular_material_grid_list__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @angular/material/grid-list */ "./node_modules/@angular/material/esm5/grid-list.es5.js");
-/* harmony import */ var _angular_material___WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @angular/material/ */ "./node_modules/@angular/material/esm5/material.es5.js");
-/* harmony import */ var _angular_material_select__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @angular/material/select */ "./node_modules/@angular/material/esm5/select.es5.js");
-/* harmony import */ var _angular_material_list__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @angular/material/list */ "./node_modules/@angular/material/esm5/list.es5.js");
-/* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm5/animations.js");
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
+/* harmony import */ var _angular_material_card__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/material/card */ "./node_modules/@angular/material/esm5/card.es5.js");
+/* harmony import */ var _angular_material_form_field__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/material/form-field */ "./node_modules/@angular/material/esm5/form-field.es5.js");
+/* harmony import */ var _angular_material_input__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/material/input */ "./node_modules/@angular/material/esm5/input.es5.js");
+/* harmony import */ var _angular_material_button__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @angular/material/button */ "./node_modules/@angular/material/esm5/button.es5.js");
+/* harmony import */ var _angular_material_grid_list__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @angular/material/grid-list */ "./node_modules/@angular/material/esm5/grid-list.es5.js");
+/* harmony import */ var _angular_material___WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @angular/material/ */ "./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var _angular_material_select__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @angular/material/select */ "./node_modules/@angular/material/esm5/select.es5.js");
+/* harmony import */ var _angular_material_list__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @angular/material/list */ "./node_modules/@angular/material/esm5/list.es5.js");
+/* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm5/animations.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -150,17 +152,18 @@ var AppModule = /** @class */ (function () {
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
-                _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_16__["BrowserAnimationsModule"],
-                _angular_material_card__WEBPACK_IMPORTED_MODULE_8__["MatCardModule"],
-                _angular_material_form_field__WEBPACK_IMPORTED_MODULE_9__["MatFormFieldModule"],
-                _angular_material_input__WEBPACK_IMPORTED_MODULE_10__["MatInputModule"],
-                _angular_material_button__WEBPACK_IMPORTED_MODULE_11__["MatButtonModule"],
-                _angular_material_grid_list__WEBPACK_IMPORTED_MODULE_12__["MatGridListModule"],
-                _angular_material_list__WEBPACK_IMPORTED_MODULE_15__["MatListModule"],
-                _angular_material___WEBPACK_IMPORTED_MODULE_13__["MatOptionModule"],
-                _angular_material_select__WEBPACK_IMPORTED_MODULE_14__["MatSelectModule"],
-                _angular_forms__WEBPACK_IMPORTED_MODULE_17__["FormsModule"],
-                _angular_common_http__WEBPACK_IMPORTED_MODULE_18__["HttpClientModule"]
+                _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_17__["BrowserAnimationsModule"],
+                _angular_material_card__WEBPACK_IMPORTED_MODULE_9__["MatCardModule"],
+                _angular_material_form_field__WEBPACK_IMPORTED_MODULE_10__["MatFormFieldModule"],
+                _angular_material_input__WEBPACK_IMPORTED_MODULE_11__["MatInputModule"],
+                _angular_material_button__WEBPACK_IMPORTED_MODULE_12__["MatButtonModule"],
+                _angular_material_grid_list__WEBPACK_IMPORTED_MODULE_13__["MatGridListModule"],
+                _angular_material_list__WEBPACK_IMPORTED_MODULE_16__["MatListModule"],
+                _angular_material___WEBPACK_IMPORTED_MODULE_14__["MatOptionModule"],
+                _angular_material_select__WEBPACK_IMPORTED_MODULE_15__["MatSelectModule"],
+                _angular_forms__WEBPACK_IMPORTED_MODULE_18__["FormsModule"],
+                _angular_common_http__WEBPACK_IMPORTED_MODULE_19__["HttpClientModule"],
+                _angular_common__WEBPACK_IMPORTED_MODULE_8__["CommonModule"]
             ],
             providers: [],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"]]
@@ -258,7 +261,7 @@ module.exports = "mat-card{\r\n    padding: 1%;\r\n    width: 90%;\r\n    border
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\r\n  <p>Materials Handling Activities Solutions</p>\r\n  <mat-card>\r\n      <mat-form-field>\r\n          <mat-select placeholder=\"Material Handling Application\" [(value)]=\"query\">\r\n            <mat-option *ngFor=\"let types of filters\" [value]=\"types\">\r\n              {{types}}\r\n            </mat-option>\r\n          </mat-select>\r\n        </mat-form-field>\r\n    <!---<input matInput type=\"text\" placeholder=\"Enter Keywords\" [(ngModel)]=\"queryText\" (keypress)=\"handleEnter($event.keyCode)\">-->\r\n    <button (click)=\"search()\" mat-button><b>Search</b></button>\r\n  </mat-card>\r\n</div>"
+module.exports = "<div class=\"container\">\r\n  <p>Materials Handling Activities Solutions</p>\r\n  <mat-card>\r\n    <mat-form-field>\r\n      <mat-select placeholder=\"Material Handling Application\" [(value)]=\"query\">\r\n        <mat-option *ngFor=\"let types of filters\" [value]=\"types\">\r\n          {{types}}\r\n        </mat-option>\r\n      </mat-select>\r\n    </mat-form-field>\r\n    <!---<input matInput type=\"text\" placeholder=\"Enter Keywords\" [(ngModel)]=\"queryText\" (keypress)=\"handleEnter($event.keyCode)\">-->\r\n    <button (click)=\"search()\" mat-button><b>Search</b></button>\r\n  </mat-card>\r\n</div>"
 
 /***/ }),
 
@@ -329,7 +332,7 @@ var QueryComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "mat-grid-tile{\r\n    border: solid darkgrey 3px;\r\n    height:10%;\r\n    width:50%;\r\n}\r\nvideo{\r\n    height:200px;\r\n    width: 200px\r\n}"
+module.exports = "mat-grid-tile{\r\n    margin-right: 5%;\r\n    margin-left: 5%;\r\n    height:10%;\r\n    width:50%;\r\n}\r\nvideo{\r\n    max-height:60%;\r\n    width: 80%;\r\n    align-content:center;\r\n}\r\nimg{\r\n    \r\n    max-height:60%;\r\n    width: 80%;\r\n    \r\n    align-content:center;\r\n}\r\n"
 
 /***/ }),
 
@@ -340,7 +343,7 @@ module.exports = "mat-grid-tile{\r\n    border: solid darkgrey 3px;\r\n    heigh
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<video controls (click)=\"toggleVideo()\" id=\"videoPlayer\">\r\n    <source src=\"../../../dist/Data/Kinetic Technologies/513.mp4\" type=\"video/mp4\" />\r\n    </video>\r\n<div>\r\n<mat-grid-list cols=\"2\" rowHeight=\"2:1\">\r\n    <mat-grid-tile *ngFor=\"let x of apiResponse\" >\r\n <img src=\"../../../dist/Data/{{x.company}}/{{x.assetID}}.{{x.fileType}}\">\r\n \r\n <br>\r\n        <div>{{x.fileType}}<br>{{ x.description}}<br>{{ x.company}}</div>\r\n \r\n\r\n</mat-grid-tile>\r\n</mat-grid-list>\r\n</div>"
+module.exports = "<div>\r\n    <mat-grid-list cols=\"2\">\r\n        <mat-grid-tile *ngFor=\"let x of apiResponse\">\r\n            <div class=\"container\">\r\n                <div class=\"row\">\r\n\r\n                    <div class=\"media\" title=\"{{x.description}}\"\r\n                        *ngIf=\"x.fileType == 'mp4' || x.fileType == 'mkv' ||  x.fileType =='mov' ||  x.fileType =='flv' || x.fileType =='wmv'\">\r\n                        <video controls (click)=\"toggleVideo()\" id=\"videoPlayer\" >\r\n                            <source src=\"http://localhost:8081/Data/{{x.company}}/{{x.assetID}}.{{x.fileType}}\"\r\n                            onError=\"this.src='http://localhost:8081/NotFound.jpg';\"\r\n                                type=\"video/mp4\" />\r\n                        </video>\r\n                    </div>\r\n                    <div class=\"media\"\r\n                        *ngIf=\"x.fileType != 'mp4' && x.fileType != 'mkv' &&  x.fileType !='mov' &&  x.fileType !='flv' &&  x.fileType !='wmv'\">\r\n                        <img title=\"{{x.description}}\" src=\"http://localhost:8081/Data/{{x.company}}/{{x.assetID}}.{{x.fileType}}\" onError=\"this.src='http://localhost:8081/NotFound.jpg';\">\r\n                    </div>\r\n                </div>\r\n                <div class=\"row\">\r\n                    {{x.productName}}\r\n                </div>\r\n\r\n                <div class=\"row\">\r\n                    {{x.description}}\r\n                </div>\r\n            </div>\r\n\r\n        </mat-grid-tile>\r\n    </mat-grid-list>\r\n</div>"
 
 /***/ }),
 
@@ -414,7 +417,7 @@ module.exports = ".containerz{\r\n    max-height: 50%;\r\n    OVERFLOW-Y:scroll;
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\r\n<mat-selection-list #shoes>\r\n    <mat-list-option *ngFor=\"let types of productList\">\r\n      {{types}}\r\n    </mat-list-option>\r\n  </mat-selection-list>\r\n</div>  "
+module.exports = "<div>\r\n<mat-selection-list [(ngModel)]=\"selectedOptions\" (ngModelChange)=\"onProductListChange($event)\">\r\n    <mat-list-option *ngFor=\"let types of productList\" [value]=\"types\">\r\n      {{types}}\r\n    </mat-list-option>\r\n  </mat-selection-list>\r\n</div>  "
 
 /***/ }),
 
@@ -441,13 +444,27 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 var SearchHistoryComponent = /** @class */ (function () {
     function SearchHistoryComponent() {
+        this.productsEmitter = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
     }
     SearchHistoryComponent.prototype.ngOnInit = function () {
+        this.selectedOptions = this.resultProducts;
+    };
+    SearchHistoryComponent.prototype.onProductListChange = function (event) {
+        console.log(event.length);
+        this.productsEmitter.emit(this.selectedOptions);
     };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
         __metadata("design:type", Object)
     ], SearchHistoryComponent.prototype, "productList", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Object)
+    ], SearchHistoryComponent.prototype, "resultProducts", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
+        __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"])
+    ], SearchHistoryComponent.prototype, "productsEmitter", void 0);
     SearchHistoryComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-search-history',
@@ -470,7 +487,7 @@ var SearchHistoryComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".container{\r\n    background-color: #eee;\r\n    margin: 0px;\r\n    max-width: 100%;\r\n    max-height: 100%;\r\n    padding-top : 5%;\r\n}\r\n\r\n.grid-container{\r\n    display: -ms-grid;\r\n    display: grid;\r\n    -ms-grid-columns: 70% 30%;\r\n        grid-template-columns: 70% 30%;\r\n    grid-row-gap: 5%;\r\n    grid-column-gap: 1%;\r\n    padding-top: 4%;\r\n    margin-right: 5%;\r\n    margin-left: 5%;\r\n    \r\n}\r\n\r\n.item{\r\n    border: solid darkgrey 3px;\r\n    height: 500px;\r\n    OVERFLOW-Y:scroll;\r\n}\r\n\r\n.item-1{\r\n    -ms-grid-row: 1;\r\n        grid-row-start: 1;\r\n    -ms-grid-row-span: 2;\r\n    grid-row-end: 3;\r\n    height: 1000px;\r\n    OVERFLOW-Y:scroll;\r\n}"
+module.exports = ".container{\r\n    background-color: #eee;\r\n    margin: 0px;\r\n    \r\n    max-width: 100%;\r\n    max-height: 100%;\r\n    padding-top : 5%;\r\n}\r\n\r\nimg{\r\n    width:100%;\r\n}\r\n\r\n.grid-container{\r\n    display: -ms-grid;\r\n    display: grid;\r\n    -ms-grid-columns: 70% 30%;\r\n        grid-template-columns: 70% 30%;\r\n    grid-row-gap: 5%;\r\n    grid-column-gap: 1%;\r\n    padding-top: 4%;\r\n    margin-right: 5%;\r\n    margin-left: 5%;\r\n    \r\n}\r\n\r\nh4{\r\n\r\n    color: white;\r\n}\r\n\r\n.results-display{\r\n    background:#1e88e5;\r\n}\r\n\r\n.item{\r\n    -ms-grid-column: 2;\r\n        grid-column-start: 2;\r\n    -ms-grid-column-span: 1;\r\n    grid-column-end: 3;\r\n    border: solid darkgrey 3px;\r\n    height: 500px;\r\n    OVERFLOW-Y:scroll;\r\n}\r\n\r\n.item-1{\r\n    -ms-grid-row: 1;\r\n        grid-row-start: 1;\r\n    -ms-grid-row-span: 2;\r\n    grid-row-end: 3;\r\n    OVERFLOW-Y:scroll;\r\n}"
 
 /***/ }),
 
@@ -481,7 +498,7 @@ module.exports = ".container{\r\n    background-color: #eee;\r\n    margin: 0px;
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\r\n  <app-query [filters]=\"filters\"  *ngIf=\"filterAvailable\" (queryEmittor)=\"onInputs($event)\">  </app-query>\r\n\r\n  <div class=\"grid-container\" *ngIf=\"resultsAvailable\" >\r\n    <div class=\"item-1 app-results\">\r\n        <app-results [apiResponse]=\"apiResponse\" [resultsAvailable]=\"resultsAvailable\"></app-results>\r\n    </div>\r\n    \r\n    <div class=\"item app-search-history\" >\r\n      <app-search-history [productList]=\"productList\"  *ngIf=\"productListAvailable\">  </app-search-history>\r\n    </div>\r\n    \r\n    <!-- <div class=\"item app-facets\">\r\n      <app-facets [filters]=\"filters\" ></app-facets>\r\n    </div>\r\n     -->\r\n  </div>\r\n  \r\n</div>\r\n\r\n"
+module.exports = "<div class=\"container\">\r\n  <div>\r\n    <img src=\"http://localhost:8081/MHIbar.png\">\r\n  </div>\r\n  <app-query [filters]=\"filters\" *ngIf=\"filterAvailable\" (queryEmittor)=\"onInputs($event)\"> </app-query>\r\n\r\n  <div class=\"grid-container\" *ngIf=\"resultsAvailable\">\r\n    <div class=\"item-1 app-results\" *ngIf=\"(resultsAvailable && productSearchResultsAvailable)\">\r\n      <app-results [apiResponse]=\"apiResponse\" [resultsAvailable]=\"resultsAvailable\"></app-results>\r\n    </div>\r\n\r\n    <div class=\"item app-search-history\">\r\n      <div class=\"results-display\">\r\n        <h4>Current Search</h4>\r\n      </div>\r\n      <app-search-history [productList]=\"productList\" [resultProducts]=\"resultProducts\"\r\n        *ngIf=\"(resultsAvailable && productListAvailable)\" (productsEmitter)=\"onProducts($event)\"> </app-search-history>\r\n    </div>\r\n\r\n    <!-- <div class=\"item app-facets\">\r\n      <app-facets [filters]=\"filters\" ></app-facets>\r\n    </div>\r\n     -->\r\n  </div>\r\n\r\n</div>"
 
 /***/ }),
 
@@ -516,13 +533,16 @@ var ToggleComponent = /** @class */ (function () {
         this.resultsAvailable = false;
         this.errorOccured = false;
         this.apiResponse = '';
+        this.resultProducts = '';
         this.filters = '';
         this.productList = '';
         this.filterAvailable = false;
         this.productListAvailable = false;
+        this.productSearchResultsAvailable = true;
     }
     ToggleComponent.prototype.ngOnInit = function () {
         var _this = this;
+        //Drop down population
         this.apiService.loadFilters().subscribe(function (response) {
             _this.filters = response;
             _this.filterAvailable = true;
@@ -532,6 +552,7 @@ var ToggleComponent = /** @class */ (function () {
             _this.errorOccured = true;
             console.log("Error : " + JSON.stringify(err));
         });
+        //List of products
         this.apiService.productList().subscribe(function (response) {
             _this.productList = response;
             _this.productListAvailable = true;
@@ -541,16 +562,59 @@ var ToggleComponent = /** @class */ (function () {
             console.log("Error : " + JSON.stringify(err));
         });
     };
+    //Drop down search
     ToggleComponent.prototype.onInputs = function (inputQuery) {
         var _this = this;
-        this.apiService.search(inputQuery).subscribe(function (response) {
+        this.resultsAvailable = false;
+        this.searchInProgress = true;
+        console.log(inputQuery);
+        if (inputQuery == "All Products") {
+            console.log("hiii");
+            this.apiService.loadAllProducts().subscribe(function (response) {
+                _this.apiResponse = response;
+            }, function (err) {
+                _this.errorOccured = true;
+                _this.searchInProgress = false;
+                _this.resultsAvailable = false;
+                console.log("Error : " + JSON.stringify(err));
+            });
+            this.resultsAvailable = true;
+            this.searchInProgress = false;
+            this.resultProducts = this.productList;
+        }
+        else {
+            this.apiService.search(inputQuery).subscribe(function (response) {
+                _this.apiResponse = response;
+            }, function (err) {
+                _this.errorOccured = true;
+                _this.searchInProgress = false;
+                _this.resultsAvailable = false;
+                console.log("Error : " + JSON.stringify(err));
+            });
+            //checkbox products in results
+            this.apiService.resultProducts(inputQuery).subscribe(function (response) {
+                _this.resultProducts = response;
+                _this.resultsAvailable = true;
+                _this.searchInProgress = false;
+            }, function (err) {
+                console.log("Error : " + JSON.stringify(err));
+            });
+        }
+    };
+    //Search on product filter
+    ToggleComponent.prototype.onProducts = function (selectedProducts) {
+        var _this = this;
+        this.productSearchResultsAvailable = false;
+        this.searchInProgress = true;
+        this.apiService.searchProduct(selectedProducts, selectedProducts.length).subscribe(function (response) {
+            _this.productSearchResultsAvailable = true;
             _this.searchInProgress = false;
-            _this.resultsAvailable = true;
             _this.apiResponse = response;
             console.log(response);
         }, function (err) {
             _this.errorOccured = true;
             _this.searchInProgress = false;
+            _this.resultsAvailable = false;
             console.log("Error : " + JSON.stringify(err));
         });
     };
@@ -666,6 +730,34 @@ var APICallsService = /** @class */ (function () {
     };
     APICallsService.prototype.productList = function () {
         var URL = apiURL + "allproducts";
+        var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]();
+        headers.append('Content-Type', 'application/json');
+        var params = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpParams"]();
+        return this.httpClient.get(URL, { headers: headers, params: params });
+    };
+    APICallsService.prototype.resultProducts = function (query) {
+        var URL = apiURL + "resultProducts";
+        var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]();
+        headers.append('Content-Type', 'application/json');
+        var params = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpParams"]().set('query', query);
+        return this.httpClient.get(URL, { headers: headers, params: params });
+    };
+    APICallsService.prototype.searchProduct = function (query, length) {
+        var URL = apiURL + "productSearch";
+        var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]();
+        headers.append('Content-Type', 'application/json');
+        var params = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpParams"]();
+        params = params.set('length', length.toString());
+        var count = 0;
+        for (var _i = 0, query_1 = query; _i < query_1.length; _i++) {
+            var x = query_1[_i];
+            params = params.set((count++).toString(), x);
+        }
+        return this.httpClient.get(URL, { headers: headers, params: params });
+    };
+    APICallsService.prototype.loadAllProducts = function () {
+        var URL = apiURL + "allProductSearch";
+        console.log("HEREEEEEEEEEEEE");
         var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]();
         headers.append('Content-Type', 'application/json');
         var params = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpParams"]();

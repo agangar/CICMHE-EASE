@@ -1,19 +1,21 @@
 <div>
     <mat-grid-list cols="2">
-        <mat-grid-tile *ngFor="let x of apiResponse">
+        <mat-grid-tile class="mat-grid-tile" *ngFor="let x of apiResponse">
             <div class="container">
                 <div class="row">
 
-                    <div class="media"
+                    <div class="media" title="{{x.description}}"
                         *ngIf="x.fileType == 'mp4' || x.fileType == 'mkv' ||  x.fileType =='mov' ||  x.fileType =='flv' || x.fileType =='wmv'">
                         <video controls (click)="toggleVideo()" id="videoPlayer">
                             <source src="http://localhost:8081/Data/{{x.company}}/{{x.assetID}}.{{x.fileType}}"
-                                type="video/mp4" />
+                                onError="this.src='http://localhost:8081/NotFound.jpg';" type="video/mp4" />
                         </video>
                     </div>
                     <div class="media"
                         *ngIf="x.fileType != 'mp4' && x.fileType != 'mkv' &&  x.fileType !='mov' &&  x.fileType !='flv' &&  x.fileType !='wmv'">
-                        <img src="http://localhost:8081/Data/{{x.company}}/{{x.assetID}}.{{x.fileType}}">
+                        <img title="{{x.description}}"
+                            src="http://localhost:8081/Data/{{x.company}}/{{x.assetID}}.{{x.fileType}}"
+                            onError="this.src='http://localhost:8081/NotFound.jpg';">
                     </div>
                 </div>
                 <div class="row">

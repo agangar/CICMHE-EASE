@@ -10,9 +10,6 @@
     </div>
 
     <div class="item app-search-history">
-      <div class="results-display">
-        <h4>Current Search</h4>
-      </div>
       <app-search-history [productList]="productList" [resultProducts]="resultProducts"
         *ngIf="(resultsAvailable && productListAvailable)" (productsEmitter)="onProducts($event)"> </app-search-history>
     </div>
@@ -21,6 +18,9 @@
       <app-facets [filters]="filters" ></app-facets>
     </div>
      -->
+     <div class="item-2 app-facets">
+      <app-facets [companyList]="companyList" *ngIf="companyListAvailable"></app-facets>
+    </div>
   </div>
 
 </div>

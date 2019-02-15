@@ -2,3 +2,17 @@
     max-height: 50%;
     OVERFLOW-Y:scroll;
 }
+
+h4{
+
+    color: white;
+}
+
+.results-display{
+    background:#1e88e5;
+}
+
+.mat-button{
+    background: #eee;
+    
+}
