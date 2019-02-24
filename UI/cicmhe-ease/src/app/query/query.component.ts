@@ -8,6 +8,7 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 export class QueryComponent implements OnInit {
   
   @Input() filters:any;
+  @Input() searchonProducts:boolean;
   @Output() queryEmittor : EventEmitter<any> = new EventEmitter<any>(); 
  
   query:string = '';
@@ -19,8 +20,7 @@ export class QueryComponent implements OnInit {
 
 
   public search() : void{
-    console.log(this.query);
-    this.queryEmittor.emit(this.query);
+    this.queryEmittor.emit([this.query,10,0,0]);
   }
 
   public handleEnter(keyCode: number) : void{

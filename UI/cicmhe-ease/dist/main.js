@@ -194,7 +194,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"containers\">\r\n  <mat-selection-list #shoes>\r\n    <mat-list-option *ngFor=\"let types of filters\">\r\n      {{types}}\r\n    </mat-list-option>\r\n  </mat-selection-list>\r\n</div>"
+module.exports = "<div class=\"containers\">\r\n  <mat-selection-list [(ngModel)]=\"selectedOptions\">\r\n    <mat-list-option *ngFor=\"let types of companyList\" [value]=\"types\">\r\n      {{types}}\r\n    </mat-list-option>\r\n  </mat-selection-list>\r\n</div>"
 
 /***/ }),
 
@@ -223,11 +223,16 @@ var FacetsComponent = /** @class */ (function () {
     function FacetsComponent() {
     }
     FacetsComponent.prototype.ngOnInit = function () {
+        this.selectedOptions = this.companyList;
     };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
         __metadata("design:type", Object)
     ], FacetsComponent.prototype, "filters", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Object)
+    ], FacetsComponent.prototype, "companyList", void 0);
     FacetsComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-facets',
@@ -332,7 +337,7 @@ var QueryComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "mat-grid-tile{\r\n    margin-right: 5%;\r\n    margin-left: 5%;\r\n    height:10%;\r\n    width:50%;\r\n}\r\nvideo{\r\n    max-height:60%;\r\n    width: 80%;\r\n    align-content:center;\r\n}\r\nimg{\r\n    \r\n    max-height:60%;\r\n    width: 80%;\r\n    \r\n    align-content:center;\r\n}\r\n"
+module.exports = ".mat-grid-tile{\r\n    margin-right: 5%;\r\n    margin-left: 5%;\r\n    height:10%;\r\n    width:50%;\r\n    padding-top: 5%;\r\n    box-sizing: content-box;\r\n}\r\nvideo{\r\n    width:  250px;\r\n    height: 200px;\r\n}\r\nimg{\r\n    width:  250px;\r\n    height: 200px;\r\n    \r\n    \r\n}\r\n.media{\r\n    border: solid black 2px;\r\n    box-sizing: border-box;\r\n\r\n}\r\n"
 
 /***/ }),
 
@@ -343,7 +348,7 @@ module.exports = "mat-grid-tile{\r\n    margin-right: 5%;\r\n    margin-left: 5%
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\r\n    <mat-grid-list cols=\"2\">\r\n        <mat-grid-tile *ngFor=\"let x of apiResponse\">\r\n            <div class=\"container\">\r\n                <div class=\"row\">\r\n\r\n                    <div class=\"media\" title=\"{{x.description}}\"\r\n                        *ngIf=\"x.fileType == 'mp4' || x.fileType == 'mkv' ||  x.fileType =='mov' ||  x.fileType =='flv' || x.fileType =='wmv'\">\r\n                        <video controls (click)=\"toggleVideo()\" id=\"videoPlayer\" >\r\n                            <source src=\"http://localhost:8081/Data/{{x.company}}/{{x.assetID}}.{{x.fileType}}\"\r\n                            onError=\"this.src='http://localhost:8081/NotFound.jpg';\"\r\n                                type=\"video/mp4\" />\r\n                        </video>\r\n                    </div>\r\n                    <div class=\"media\"\r\n                        *ngIf=\"x.fileType != 'mp4' && x.fileType != 'mkv' &&  x.fileType !='mov' &&  x.fileType !='flv' &&  x.fileType !='wmv'\">\r\n                        <img title=\"{{x.description}}\" src=\"http://localhost:8081/Data/{{x.company}}/{{x.assetID}}.{{x.fileType}}\" onError=\"this.src='http://localhost:8081/NotFound.jpg';\">\r\n                    </div>\r\n                </div>\r\n                <div class=\"row\">\r\n                    {{x.productName}}\r\n                </div>\r\n\r\n                <div class=\"row\">\r\n                    {{x.description}}\r\n                </div>\r\n            </div>\r\n\r\n        </mat-grid-tile>\r\n    </mat-grid-list>\r\n</div>"
+module.exports = "<div>\r\n    <mat-grid-list cols=\"2\">\r\n        <mat-grid-tile class=\"mat-grid-tile\" *ngFor=\"let x of apiResponse\">\r\n            <div class=\"container\">\r\n                <div class=\"row\">\r\n\r\n                    <div class=\"media\" title=\"{{x.description}}\"\r\n                        *ngIf=\"x.fileType == 'mp4' || x.fileType == 'mkv' ||  x.fileType =='mov' ||  x.fileType =='flv' || x.fileType =='wmv'\">\r\n                        <video controls (click)=\"toggleVideo()\" id=\"videoPlayer\">\r\n                            <source src=\"http://localhost:8081/Data/{{x.company}}/{{x.assetID}}.{{x.fileType}}\"\r\n                                onError=\"this.src='http://localhost:8081/NotFound.jpg';\" type=\"video/mp4\" />\r\n                        </video>\r\n                    </div>\r\n                    <div class=\"media\"\r\n                        *ngIf=\"x.fileType != 'mp4' && x.fileType != 'mkv' &&  x.fileType !='mov' &&  x.fileType !='flv' &&  x.fileType !='wmv'\">\r\n                        <img title=\"{{x.description}}\"\r\n                            src=\"http://localhost:8081/Data/{{x.company}}/{{x.assetID}}.{{x.fileType}}\"\r\n                            onError=\"this.src='http://localhost:8081/NotFound.jpg';\">\r\n                    </div>\r\n                </div>\r\n                <div class=\"row\">\r\n                    {{x.productName}}\r\n                </div>\r\n\r\n                <div class=\"row\">\r\n                    {{x.description}}\r\n                </div>\r\n            </div>\r\n\r\n        </mat-grid-tile>\r\n    </mat-grid-list>\r\n</div>"
 
 /***/ }),
 
@@ -406,7 +411,7 @@ var ResultsComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".containerz{\r\n    max-height: 50%;\r\n    OVERFLOW-Y:scroll;\r\n}"
+module.exports = ".containerz{\r\n    max-height: 50%;\r\n    OVERFLOW-Y:scroll;\r\n}\r\n\r\nh4{\r\n\r\n    color: white;\r\n}\r\n\r\n.results-display{\r\n    background:#1e88e5;\r\n}\r\n\r\n.mat-button{\r\n    background: #eee;\r\n    \r\n}"
 
 /***/ }),
 
@@ -417,7 +422,7 @@ module.exports = ".containerz{\r\n    max-height: 50%;\r\n    OVERFLOW-Y:scroll;
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\r\n<mat-selection-list [(ngModel)]=\"selectedOptions\" (ngModelChange)=\"onProductListChange($event)\">\r\n    <mat-list-option *ngFor=\"let types of productList\" [value]=\"types\">\r\n      {{types}}\r\n    </mat-list-option>\r\n  </mat-selection-list>\r\n</div>  "
+module.exports = "<div>\r\n\r\n  <div >\r\n    <mat-card class=\"results-display\">\r\n      <h6>Current Search   \r\n      <button mat-button (click)=\"clear()\" class=\"mat-button\">Unselect All</button></h6>\r\n    </mat-card>\r\n  </div>\r\n  <mat-selection-list [(ngModel)]=\"selectedOptions\" (ngModelChange)=\"onProductListChange($event)\">\r\n    <mat-list-option *ngFor=\"let types of productList\" [value]=\"types\">\r\n      {{types}}\r\n    </mat-list-option>\r\n  </mat-selection-list>\r\n</div>"
 
 /***/ }),
 
@@ -448,6 +453,9 @@ var SearchHistoryComponent = /** @class */ (function () {
     }
     SearchHistoryComponent.prototype.ngOnInit = function () {
         this.selectedOptions = this.resultProducts;
+    };
+    SearchHistoryComponent.prototype.clear = function () {
+        this.selectedOptions = [];
     };
     SearchHistoryComponent.prototype.onProductListChange = function (event) {
         console.log(event.length);
@@ -487,7 +495,7 @@ var SearchHistoryComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".container{\r\n    background-color: #eee;\r\n    margin: 0px;\r\n    \r\n    max-width: 100%;\r\n    max-height: 100%;\r\n    padding-top : 5%;\r\n}\r\n\r\nimg{\r\n    width:100%;\r\n}\r\n\r\n.grid-container{\r\n    display: -ms-grid;\r\n    display: grid;\r\n    -ms-grid-columns: 70% 30%;\r\n        grid-template-columns: 70% 30%;\r\n    grid-row-gap: 5%;\r\n    grid-column-gap: 1%;\r\n    padding-top: 4%;\r\n    margin-right: 5%;\r\n    margin-left: 5%;\r\n    \r\n}\r\n\r\nh4{\r\n\r\n    color: white;\r\n}\r\n\r\n.results-display{\r\n    background:#1e88e5;\r\n}\r\n\r\n.item{\r\n    -ms-grid-column: 2;\r\n        grid-column-start: 2;\r\n    -ms-grid-column-span: 1;\r\n    grid-column-end: 3;\r\n    border: solid darkgrey 3px;\r\n    height: 500px;\r\n    OVERFLOW-Y:scroll;\r\n}\r\n\r\n.item-1{\r\n    -ms-grid-row: 1;\r\n        grid-row-start: 1;\r\n    -ms-grid-row-span: 2;\r\n    grid-row-end: 3;\r\n    OVERFLOW-Y:scroll;\r\n}"
+module.exports = ".container{\r\n    background-color: #eee;\r\n    margin: 0px;\r\n    max-width: 100%;\r\n    max-height: 100%;\r\n    padding-top : 5%;\r\n}\r\n\r\nimg{\r\n    width:100%;\r\n}\r\n\r\n.grid-container{\r\n    display: -ms-grid;\r\n    display: grid;\r\n    -ms-grid-columns: 70% 30%;\r\n        grid-template-columns: 70% 30%;\r\n    -ms-grid-rows: 500px 500px 500px;\r\n        grid-template-rows: 500px 500px 500px;\r\n    grid-row-gap: 5%;\r\n    grid-column-gap: 1%;\r\n    padding-top: 4%;\r\n    margin-right: 5%;\r\n    margin-left: 5%;\r\n    \r\n}\r\n\r\n.item{\r\n    -ms-grid-column: 2;\r\n        grid-column-start: 2;\r\n    -ms-grid-column-span: 1;\r\n    grid-column-end: 3;\r\n    border: solid darkgrey 3px;\r\n    -ms-grid-row:1;\r\n        grid-row-start:1; \r\n    -ms-grid-row-span: 1; \r\n    grid-row-end: 2;\r\n    OVERFLOW-Y:scroll;\r\n}\r\n\r\n.item-1{\r\n    -ms-grid-row: 1;\r\n        grid-row-start: 1;\r\n    -ms-grid-row-span: 3;\r\n    grid-row-end: 4;\r\n}\r\n\r\n.item-2{\r\n    -ms-grid-column: 2;\r\n        grid-column-start: 2;\r\n    -ms-grid-column-span: 1;\r\n    grid-column-end: 3;\r\n    border: solid darkgrey 3px;\r\n    height: 500px;\r\n    OVERFLOW-Y:scroll;\r\n\r\n}"
 
 /***/ }),
 
@@ -498,7 +506,7 @@ module.exports = ".container{\r\n    background-color: #eee;\r\n    margin: 0px;
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\r\n  <div>\r\n    <img src=\"http://localhost:8081/MHIbar.png\">\r\n  </div>\r\n  <app-query [filters]=\"filters\" *ngIf=\"filterAvailable\" (queryEmittor)=\"onInputs($event)\"> </app-query>\r\n\r\n  <div class=\"grid-container\" *ngIf=\"resultsAvailable\">\r\n    <div class=\"item-1 app-results\" *ngIf=\"(resultsAvailable && productSearchResultsAvailable)\">\r\n      <app-results [apiResponse]=\"apiResponse\" [resultsAvailable]=\"resultsAvailable\"></app-results>\r\n    </div>\r\n\r\n    <div class=\"item app-search-history\">\r\n      <div class=\"results-display\">\r\n        <h4>Current Search</h4>\r\n      </div>\r\n      <app-search-history [productList]=\"productList\" [resultProducts]=\"resultProducts\"\r\n        *ngIf=\"(resultsAvailable && productListAvailable)\" (productsEmitter)=\"onProducts($event)\"> </app-search-history>\r\n    </div>\r\n\r\n    <!-- <div class=\"item app-facets\">\r\n      <app-facets [filters]=\"filters\" ></app-facets>\r\n    </div>\r\n     -->\r\n  </div>\r\n\r\n</div>"
+module.exports = "<div class=\"container\">\r\n  <div>\r\n    <img src=\"http://localhost:8081/MHIbar.png\">\r\n  </div>\r\n  <app-query [filters]=\"filters\" *ngIf=\"filterAvailable\" (queryEmittor)=\"onInputs($event)\"> </app-query>\r\n\r\n  <div class=\"grid-container\" *ngIf=\"resultsAvailable\">\r\n    <div class=\"item-1 app-results\" *ngIf=\"(resultsAvailable && productSearchResultsAvailable)\">\r\n      <app-results [apiResponse]=\"apiResponse\" [resultsAvailable]=\"resultsAvailable\"></app-results>\r\n    </div>\r\n\r\n    <div class=\"item app-search-history\">\r\n      <app-search-history [productList]=\"productList\" [resultProducts]=\"resultProducts\"\r\n        *ngIf=\"(resultsAvailable && productListAvailable)\" (productsEmitter)=\"onProducts($event)\"> </app-search-history>\r\n    </div>\r\n\r\n    <!-- <div class=\"item app-facets\">\r\n      <app-facets [filters]=\"filters\" ></app-facets>\r\n    </div>\r\n     -->\r\n     <div class=\"item-2 app-facets\">\r\n      <app-facets [companyList]=\"companyList\" *ngIf=\"companyListAvailable\"></app-facets>\r\n    </div>\r\n  </div>\r\n\r\n</div>"
 
 /***/ }),
 
@@ -536,8 +544,10 @@ var ToggleComponent = /** @class */ (function () {
         this.resultProducts = '';
         this.filters = '';
         this.productList = '';
+        this.companyList = '';
         this.filterAvailable = false;
         this.productListAvailable = false;
+        this.companyListAvailable = false;
         this.productSearchResultsAvailable = true;
     }
     ToggleComponent.prototype.ngOnInit = function () {
@@ -556,6 +566,15 @@ var ToggleComponent = /** @class */ (function () {
         this.apiService.productList().subscribe(function (response) {
             _this.productList = response;
             _this.productListAvailable = true;
+            console.log(response);
+        }, function (err) {
+            _this.errorOccured = true;
+            console.log("Error : " + JSON.stringify(err));
+        });
+        //List of Company
+        this.apiService.companyList().subscribe(function (response) {
+            _this.companyList = response;
+            _this.companyListAvailable = true;
             console.log(response);
         }, function (err) {
             _this.errorOccured = true;
@@ -583,6 +602,7 @@ var ToggleComponent = /** @class */ (function () {
             this.resultProducts = this.productList;
         }
         else {
+            this.productListAvailable = false;
             this.apiService.search(inputQuery).subscribe(function (response) {
                 _this.apiResponse = response;
             }, function (err) {
@@ -593,6 +613,7 @@ var ToggleComponent = /** @class */ (function () {
             });
             //checkbox products in results
             this.apiService.resultProducts(inputQuery).subscribe(function (response) {
+                _this.productListAvailable = true;
                 _this.resultProducts = response;
                 _this.resultsAvailable = true;
                 _this.searchInProgress = false;
@@ -730,6 +751,13 @@ var APICallsService = /** @class */ (function () {
     };
     APICallsService.prototype.productList = function () {
         var URL = apiURL + "allproducts";
+        var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]();
+        headers.append('Content-Type', 'application/json');
+        var params = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpParams"]();
+        return this.httpClient.get(URL, { headers: headers, params: params });
+    };
+    APICallsService.prototype.companyList = function () {
+        var URL = apiURL + "companyList";
         var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]();
         headers.append('Content-Type', 'application/json');
         var params = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpParams"]();

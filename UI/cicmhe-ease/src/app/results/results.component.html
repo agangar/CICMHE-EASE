@@ -1,4 +1,5 @@
-<div>
+<div *ngIf="resultsAvailable">
+    <h5>Found {{resultCount}} items for your search</h5>
     <mat-grid-list cols="2">
         <mat-grid-tile class="mat-grid-tile" *ngFor="let x of apiResponse">
             <div class="container">
@@ -7,26 +8,32 @@
                     <div class="media" title="{{x.description}}"
                         *ngIf="x.fileType == 'mp4' || x.fileType == 'mkv' ||  x.fileType =='mov' ||  x.fileType =='flv' || x.fileType =='wmv'">
                         <video controls (click)="toggleVideo()" id="videoPlayer">
-                            <source src="http://localhost:8081/Data/{{x.company}}/{{x.assetID}}.{{x.fileType}}"
+                            <source
+                                src="https://s3.us-east-2.amazonaws.com/cichmedata/dist/assets/Data/{{x.company}}/{{x.assetID}}.mp4"
                                 onError="this.src='http://localhost:8081/NotFound.jpg';" type="video/mp4" />
                         </video>
                     </div>
                     <div class="media"
                         *ngIf="x.fileType != 'mp4' && x.fileType != 'mkv' &&  x.fileType !='mov' &&  x.fileType !='flv' &&  x.fileType !='wmv'">
                         <img title="{{x.description}}"
-                            src="http://localhost:8081/Data/{{x.company}}/{{x.assetID}}.{{x.fileType}}"
+                            src="https://s3.us-east-2.amazonaws.com/cichmedata/dist/assets/Data/{{x.company}}/{{x.assetID}}.{{x.fileType}}"
                             onError="this.src='http://localhost:8081/NotFound.jpg';">
                     </div>
                 </div>
-                <div class="row">
-                    {{x.productName}}
+                <div class="row productName">
+                    <h6> {{x.productName}} </h6>
                 </div>
 
-                <div class="row">
+                <div class="row description">
                     {{x.description}}
                 </div>
             </div>
 
         </mat-grid-tile>
     </mat-grid-list>
+    <div class="row paginator">
+        <mat-paginator [length]="resultCount" [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 25]"
+            (page)="handlePaginatorEvent($event)">
+        </mat-paginator>
+    </div>
 </div>

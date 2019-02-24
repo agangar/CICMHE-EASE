@@ -1,14 +1,16 @@
 <div class="container">
   <div>
-    <img src="http://localhost:8081/MHIbar.png">
+    <img src="https://s3.us-east-2.amazonaws.com/cichmedata/dist/assets/MHIbar.PNG">
   </div>
-  <app-query [filters]="filters" *ngIf="filterAvailable" (queryEmittor)="onInputs($event)"> </app-query>
+  <app-query [filters]="filters" *ngIf="filterAvailable" [searchonProducts]="searchonProducts" (queryEmittor)="onInputs($event)"> </app-query>
 
   <div class="grid-container" *ngIf="resultsAvailable">
     <div class="item-1 app-results" *ngIf="(resultsAvailable && productSearchResultsAvailable)">
-      <app-results [apiResponse]="apiResponse" [resultsAvailable]="resultsAvailable"></app-results>
+      <app-results [apiResponse]="apiResponse" [searchQuery]="searchQuery" [resultCount]="resultCount" [resultsAvailable]="resultsAvailable" [searchonProducts]="searchonProducts" (pageEmitter)="onInputs($event)"></app-results>
     </div>
-
+    <div class="ease-Logo">
+        <img src="https://s3.us-east-2.amazonaws.com/cichmedata/dist/assets/easeLogo2.PNG">
+      </div>    
     <div class="item app-search-history">
       <app-search-history [productList]="productList" [resultProducts]="resultProducts"
         *ngIf="(resultsAvailable && productListAvailable)" (productsEmitter)="onProducts($event)"> </app-search-history>

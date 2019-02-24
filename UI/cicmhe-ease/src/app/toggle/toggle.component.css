@@ -12,8 +12,8 @@ img{
 .grid-container{
     display: grid;
     grid-template-columns: 70% 30%;
-    grid-template-rows: 500px 500px 500px;
-    grid-row-gap: 5%;
+    grid-template-rows: 100px 500px 500px;
+    grid-row-gap: 2%;
     grid-column-gap: 1%;
     padding-top: 4%;
     margin-right: 5%;
@@ -21,20 +21,20 @@ img{
     
 }
 
+.ease-Logo{
+    grid-column-start: 2;
+    grid-column-end: 3;
+    max-height: 100px;
+}
+
 
 .item{
     grid-column-start: 2;
     grid-column-end: 3;
     border: solid darkgrey 3px;
-    grid-row-start:1; 
-    grid-row-end: 2;
     OVERFLOW-Y:scroll;
 }
 
-.item-1{
-    grid-row-start: 1;
-    grid-row-end: 4;
-}
 
 .item-2{
     grid-column-start: 2;

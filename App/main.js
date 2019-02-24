@@ -18,7 +18,7 @@ app.use('/api', controller);
 
 app.use('*', (request, response) => {
 	console.log('Here');
-	response.sendFile(path.join(__dirname, 'dist/index.html'));
+	response.sendFile(path.join(__dirname, 'dist/core.js'));
 });
 
 

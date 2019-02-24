@@ -1,11 +1,14 @@
-.mat-grid-tile{
+::ng-deep .mat-grid-tile .mat-figure{
     margin-right: 5%;
     margin-left: 5%;
     height:10%;
-    width:50%;
+    /* width:50%; */
     padding-top: 5%;
     box-sizing: content-box;
+    
+    display: flow-root;
 }
+
 video{
     width:  250px;
     height: 200px;
@@ -17,7 +20,16 @@ img{
     
 }
 .media{
-    border: solid black 2px;
+    /* border: solid black 2px; */
     box-sizing: border-box;
 
 }
+
+.container{
+    
+    border: solid black 2px;
+    max-width: min-content;
+    box-sizing: border-box;
+}
+
+

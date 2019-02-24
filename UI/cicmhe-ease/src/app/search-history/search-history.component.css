@@ -16,3 +16,7 @@ h4{
     background: #eee;
     
 }
+
+.Not-Selected{
+    filter: opacity(0.5);
+}
