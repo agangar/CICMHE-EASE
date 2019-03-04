@@ -3,5 +3,6 @@ module.exports={
 	ease_database: "ease",
 	products_collection: "product_master",
 	matrix:"matrix",
+	company:"companyList",
 	xyz:"xyz.Pack/Unpack"
 }

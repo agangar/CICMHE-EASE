@@ -1,4 +1,4 @@
-<div *ngIf="resultsAvailable">
+<div >
     <h5>Found {{resultCount}} items for your search</h5>
     <mat-grid-list cols="2">
         <mat-grid-tile class="mat-grid-tile" *ngFor="let x of apiResponse">
@@ -23,7 +23,9 @@
                 <div class="row productName">
                     <h6> {{x.productName}} </h6>
                 </div>
-
+                <div class="row company">
+                    Manufacturer: {{x.company}}
+                </div>
                 <div class="row description">
                     {{x.description}}
                 </div>

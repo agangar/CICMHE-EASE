@@ -10,19 +10,18 @@ export class SearchHistoryComponent implements OnInit {
   @Input() productList:any;
   @Input() resultProducts:any;
   @Output() productsEmitter : EventEmitter<any> = new EventEmitter<any>(); 
-  selectedOptions : string[];
+  
   constructor() { }
 
   ngOnInit() {
-    this.selectedOptions=this.resultProducts;
   }
 
   public clear() : void{
-    this.selectedOptions=[];
+    this.resultProducts=[];
   }
 
   onProductListChange(event){
       console.log(event.length);
-  this.productsEmitter.emit(this.selectedOptions);
+  this.productsEmitter.emit(this.resultProducts);
   }
 }

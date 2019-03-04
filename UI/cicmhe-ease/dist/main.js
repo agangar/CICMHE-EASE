@@ -107,16 +107,24 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_material_grid_list__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @angular/material/grid-list */ "./node_modules/@angular/material/esm5/grid-list.es5.js");
 /* harmony import */ var _angular_material___WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @angular/material/ */ "./node_modules/@angular/material/esm5/material.es5.js");
 /* harmony import */ var _angular_material_select__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @angular/material/select */ "./node_modules/@angular/material/esm5/select.es5.js");
-/* harmony import */ var _angular_material_list__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @angular/material/list */ "./node_modules/@angular/material/esm5/list.es5.js");
-/* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm5/animations.js");
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _angular_material_paginator__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @angular/material/paginator */ "./node_modules/@angular/material/esm5/paginator.es5.js");
+/* harmony import */ var _angular_material_progress_bar__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @angular/material/progress-bar */ "./node_modules/@angular/material/esm5/progress-bar.es5.js");
+/* harmony import */ var _angular_material_list__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @angular/material/list */ "./node_modules/@angular/material/esm5/list.es5.js");
+/* harmony import */ var _angular_material_icon__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @angular/material/icon */ "./node_modules/@angular/material/esm5/icon.es5.js");
+/* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm5/animations.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _angular_material_expansion__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! @angular/material/expansion */ "./node_modules/@angular/material/esm5/expansion.es5.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
+
+
 
 
 
@@ -152,17 +160,21 @@ var AppModule = /** @class */ (function () {
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
-                _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_17__["BrowserAnimationsModule"],
+                _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_20__["BrowserAnimationsModule"],
                 _angular_material_card__WEBPACK_IMPORTED_MODULE_9__["MatCardModule"],
                 _angular_material_form_field__WEBPACK_IMPORTED_MODULE_10__["MatFormFieldModule"],
                 _angular_material_input__WEBPACK_IMPORTED_MODULE_11__["MatInputModule"],
                 _angular_material_button__WEBPACK_IMPORTED_MODULE_12__["MatButtonModule"],
                 _angular_material_grid_list__WEBPACK_IMPORTED_MODULE_13__["MatGridListModule"],
-                _angular_material_list__WEBPACK_IMPORTED_MODULE_16__["MatListModule"],
+                _angular_material_list__WEBPACK_IMPORTED_MODULE_18__["MatListModule"],
                 _angular_material___WEBPACK_IMPORTED_MODULE_14__["MatOptionModule"],
                 _angular_material_select__WEBPACK_IMPORTED_MODULE_15__["MatSelectModule"],
-                _angular_forms__WEBPACK_IMPORTED_MODULE_18__["FormsModule"],
-                _angular_common_http__WEBPACK_IMPORTED_MODULE_19__["HttpClientModule"],
+                _angular_material_paginator__WEBPACK_IMPORTED_MODULE_16__["MatPaginatorModule"],
+                _angular_material_progress_bar__WEBPACK_IMPORTED_MODULE_17__["MatProgressBarModule"],
+                _angular_material_icon__WEBPACK_IMPORTED_MODULE_19__["MatIconModule"],
+                _angular_forms__WEBPACK_IMPORTED_MODULE_21__["FormsModule"],
+                _angular_material_expansion__WEBPACK_IMPORTED_MODULE_23__["MatExpansionModule"],
+                _angular_common_http__WEBPACK_IMPORTED_MODULE_22__["HttpClientModule"],
                 _angular_common__WEBPACK_IMPORTED_MODULE_8__["CommonModule"]
             ],
             providers: [],
@@ -194,7 +206,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"containers\">\r\n  <mat-selection-list [(ngModel)]=\"selectedOptions\">\r\n    <mat-list-option *ngFor=\"let types of companyList\" [value]=\"types\">\r\n      {{types}}\r\n    </mat-list-option>\r\n  </mat-selection-list>\r\n</div>"
+module.exports = "\r\n\r\n<mat-accordion>\r\n  <mat-expansion-panel (opened)=\"panelOpenState\" (closed)=\"panelOpenState\" *ngFor=\"let types of companyList\">\r\n    <mat-expansion-panel-header>\r\n      <mat-panel-title>\r\n        {{types.company}} <mat-icon *ngIf='(productCompanyList.includes(types.company))'>done</mat-icon>\r\n      </mat-panel-title>\r\n    </mat-expansion-panel-header>\r\n    <p>{{types.description}}</p>\r\n    <div class=\"company-link\"><a href=\"{{ types.link }}\" target=\"_blank\">More Info >></a></div>  \r\n  </mat-expansion-panel>\r\n  </mat-accordion>"
 
 /***/ }),
 
@@ -223,7 +235,6 @@ var FacetsComponent = /** @class */ (function () {
     function FacetsComponent() {
     }
     FacetsComponent.prototype.ngOnInit = function () {
-        this.selectedOptions = this.companyList;
     };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
@@ -233,6 +244,10 @@ var FacetsComponent = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
         __metadata("design:type", Object)
     ], FacetsComponent.prototype, "companyList", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Object)
+    ], FacetsComponent.prototype, "productCompanyList", void 0);
     FacetsComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-facets',
@@ -266,7 +281,7 @@ module.exports = "mat-card{\r\n    padding: 1%;\r\n    width: 90%;\r\n    border
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\r\n  <p>Materials Handling Activities Solutions</p>\r\n  <mat-card>\r\n    <mat-form-field>\r\n      <mat-select placeholder=\"Material Handling Application\" [(value)]=\"query\">\r\n        <mat-option *ngFor=\"let types of filters\" [value]=\"types\">\r\n          {{types}}\r\n        </mat-option>\r\n      </mat-select>\r\n    </mat-form-field>\r\n    <!---<input matInput type=\"text\" placeholder=\"Enter Keywords\" [(ngModel)]=\"queryText\" (keypress)=\"handleEnter($event.keyCode)\">-->\r\n    <button (click)=\"search()\" mat-button><b>Search</b></button>\r\n  </mat-card>\r\n</div>"
+module.exports = "<div class=\"container\">\r\n  <p>Materials Handling Activities Solutions</p>\r\n  <mat-card>\r\n    <mat-form-field>\r\n      <mat-select placeholder=\"Material Handling Application\" [(value)]=\"query\">\r\n        <mat-option *ngFor=\"let types of filters\" [value]=\"types.taskName\">\r\n          {{types.taskName}} ({{ types.description }})\r\n        </mat-option>\r\n      </mat-select>\r\n    </mat-form-field>\r\n    <!---<input matInput type=\"text\" placeholder=\"Enter Keywords\" [(ngModel)]=\"queryText\" (keypress)=\"handleEnter($event.keyCode)\">-->\r\n    <button (click)=\"search()\" mat-button><b>Search</b></button>\r\n  </mat-card>\r\n</div>"
 
 /***/ }),
 
@@ -300,8 +315,7 @@ var QueryComponent = /** @class */ (function () {
         console.log(this.filters);
     };
     QueryComponent.prototype.search = function () {
-        console.log(this.query);
-        this.queryEmittor.emit(this.query);
+        this.queryEmittor.emit([this.query, 10, 0, 0]);
     };
     QueryComponent.prototype.handleEnter = function (keyCode) {
         if (keyCode == 13) {
@@ -312,6 +326,10 @@ var QueryComponent = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
         __metadata("design:type", Object)
     ], QueryComponent.prototype, "filters", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Boolean)
+    ], QueryComponent.prototype, "searchonProducts", void 0);
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
         __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"])
@@ -337,7 +355,7 @@ var QueryComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".mat-grid-tile{\r\n    margin-right: 5%;\r\n    margin-left: 5%;\r\n    height:10%;\r\n    width:50%;\r\n    padding-top: 5%;\r\n    box-sizing: content-box;\r\n}\r\nvideo{\r\n    width:  250px;\r\n    height: 200px;\r\n}\r\nimg{\r\n    width:  250px;\r\n    height: 200px;\r\n    \r\n    \r\n}\r\n.media{\r\n    border: solid black 2px;\r\n    box-sizing: border-box;\r\n\r\n}\r\n"
+module.exports = "::ng-deep .mat-grid-tile .mat-figure{\r\n    margin-right: 5%;\r\n    margin-left: 5%;\r\n    height:10%;\r\n    /* width:50%; */\r\n    padding-top: 5%;\r\n    box-sizing: content-box;\r\n    \r\n    display: flow-root;\r\n}\r\n\r\nvideo{\r\n    width:  250px;\r\n    height: 200px;\r\n}\r\n\r\nimg{\r\n    width:  250px;\r\n    height: 200px;\r\n    \r\n    \r\n}\r\n\r\n.media{\r\n    /* border: solid black 2px; */\r\n    box-sizing: border-box;\r\n\r\n}\r\n\r\n.container{\r\n    \r\n    border: solid black 2px;\r\n    max-width: -webkit-min-content;\r\n    max-width: -moz-min-content;\r\n    max-width: min-content;\r\n    box-sizing: border-box;\r\n}\r\n\r\n\r\n"
 
 /***/ }),
 
@@ -348,7 +366,7 @@ module.exports = ".mat-grid-tile{\r\n    margin-right: 5%;\r\n    margin-left: 5
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\r\n    <mat-grid-list cols=\"2\">\r\n        <mat-grid-tile class=\"mat-grid-tile\" *ngFor=\"let x of apiResponse\">\r\n            <div class=\"container\">\r\n                <div class=\"row\">\r\n\r\n                    <div class=\"media\" title=\"{{x.description}}\"\r\n                        *ngIf=\"x.fileType == 'mp4' || x.fileType == 'mkv' ||  x.fileType =='mov' ||  x.fileType =='flv' || x.fileType =='wmv'\">\r\n                        <video controls (click)=\"toggleVideo()\" id=\"videoPlayer\">\r\n                            <source src=\"http://localhost:8081/Data/{{x.company}}/{{x.assetID}}.{{x.fileType}}\"\r\n                                onError=\"this.src='http://localhost:8081/NotFound.jpg';\" type=\"video/mp4\" />\r\n                        </video>\r\n                    </div>\r\n                    <div class=\"media\"\r\n                        *ngIf=\"x.fileType != 'mp4' && x.fileType != 'mkv' &&  x.fileType !='mov' &&  x.fileType !='flv' &&  x.fileType !='wmv'\">\r\n                        <img title=\"{{x.description}}\"\r\n                            src=\"http://localhost:8081/Data/{{x.company}}/{{x.assetID}}.{{x.fileType}}\"\r\n                            onError=\"this.src='http://localhost:8081/NotFound.jpg';\">\r\n                    </div>\r\n                </div>\r\n                <div class=\"row\">\r\n                    {{x.productName}}\r\n                </div>\r\n\r\n                <div class=\"row\">\r\n                    {{x.description}}\r\n                </div>\r\n            </div>\r\n\r\n        </mat-grid-tile>\r\n    </mat-grid-list>\r\n</div>"
+module.exports = "<div >\r\n    <h5>Found {{resultCount}} items for your search</h5>\r\n    <mat-grid-list cols=\"2\">\r\n        <mat-grid-tile class=\"mat-grid-tile\" *ngFor=\"let x of apiResponse\">\r\n            <div class=\"container\">\r\n                <div class=\"row\">\r\n\r\n                    <div class=\"media\" title=\"{{x.description}}\"\r\n                        *ngIf=\"x.fileType == 'mp4' || x.fileType == 'mkv' ||  x.fileType =='mov' ||  x.fileType =='flv' || x.fileType =='wmv'\">\r\n                        <video controls (click)=\"toggleVideo()\" id=\"videoPlayer\">\r\n                            <source\r\n                                src=\"https://s3.us-east-2.amazonaws.com/cichmedata/dist/assets/Data/{{x.company}}/{{x.assetID}}.mp4\"\r\n                                onError=\"this.src='http://localhost:8081/NotFound.jpg';\" type=\"video/mp4\" />\r\n                        </video>\r\n                    </div>\r\n                    <div class=\"media\"\r\n                        *ngIf=\"x.fileType != 'mp4' && x.fileType != 'mkv' &&  x.fileType !='mov' &&  x.fileType !='flv' &&  x.fileType !='wmv'\">\r\n                        <img title=\"{{x.description}}\"\r\n                            src=\"https://s3.us-east-2.amazonaws.com/cichmedata/dist/assets/Data/{{x.company}}/{{x.assetID}}.{{x.fileType}}\"\r\n                            onError=\"this.src='http://localhost:8081/NotFound.jpg';\">\r\n                    </div>\r\n                </div>\r\n                <div class=\"row productName\">\r\n                    <h6> {{x.productName}} </h6>\r\n                </div>\r\n                <div class=\"row company\">\r\n                    Manufacturer: {{x.company}}\r\n                </div>\r\n                <div class=\"row description\">\r\n                    {{x.description}}\r\n                </div>\r\n            </div>\r\n\r\n        </mat-grid-tile>\r\n    </mat-grid-list>\r\n    <div class=\"row paginator\">\r\n        <mat-paginator [length]=\"resultCount\" [pageSize]=\"pageSize\" [pageSizeOptions]=\"[5, 10, 25]\"\r\n            (page)=\"handlePaginatorEvent($event)\">\r\n        </mat-paginator>\r\n    </div>\r\n</div>"
 
 /***/ }),
 
@@ -375,12 +393,26 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 var ResultsComponent = /** @class */ (function () {
     function ResultsComponent() {
+        this.pageEmitter = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+        this.pageSize = 10;
+        this.pageIndex = 1;
     }
     ResultsComponent.prototype.ngOnInit = function () {
+        if (this.resultsAvailable)
+            console.log(this.resultCount);
+    };
+    ResultsComponent.prototype.handlePaginatorEvent = function (event) {
+        this.pageSize = event.pageSize;
+        this.pageIndex = event.pageIndex;
+        this.pageEmitter.emit([this.searchQuery, this.pageSize, this.pageIndex, 1]);
     };
     ResultsComponent.prototype.search = function () {
         console.log(this.apiResponse);
     };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Boolean)
+    ], ResultsComponent.prototype, "searchonProducts", void 0);
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
         __metadata("design:type", Object)
@@ -389,6 +421,18 @@ var ResultsComponent = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
         __metadata("design:type", Boolean)
     ], ResultsComponent.prototype, "resultsAvailable", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Object)
+    ], ResultsComponent.prototype, "resultCount", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", String)
+    ], ResultsComponent.prototype, "searchQuery", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
+        __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"])
+    ], ResultsComponent.prototype, "pageEmitter", void 0);
     ResultsComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-results',
@@ -411,7 +455,7 @@ var ResultsComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".containerz{\r\n    max-height: 50%;\r\n    OVERFLOW-Y:scroll;\r\n}\r\n\r\nh4{\r\n\r\n    color: white;\r\n}\r\n\r\n.results-display{\r\n    background:#1e88e5;\r\n}\r\n\r\n.mat-button{\r\n    background: #eee;\r\n    \r\n}"
+module.exports = ".containerz{\r\n    max-height: 50%;\r\n    OVERFLOW-Y:scroll;\r\n}\r\n\r\nh4{\r\n\r\n    color: white;\r\n}\r\n\r\n.results-display{\r\n    background:#1e88e5;\r\n}\r\n\r\n.mat-button{\r\n    background: #eee;\r\n    \r\n}\r\n\r\n.Not-Selected{\r\n    -webkit-filter: opacity(0.5);\r\n            filter: opacity(0.5);\r\n}"
 
 /***/ }),
 
@@ -422,7 +466,7 @@ module.exports = ".containerz{\r\n    max-height: 50%;\r\n    OVERFLOW-Y:scroll;
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\r\n\r\n  <div >\r\n    <mat-card class=\"results-display\">\r\n      <h6>Current Search   \r\n      <button mat-button (click)=\"clear()\" class=\"mat-button\">Unselect All</button></h6>\r\n    </mat-card>\r\n  </div>\r\n  <mat-selection-list [(ngModel)]=\"selectedOptions\" (ngModelChange)=\"onProductListChange($event)\">\r\n    <mat-list-option *ngFor=\"let types of productList\" [value]=\"types\">\r\n      {{types}}\r\n    </mat-list-option>\r\n  </mat-selection-list>\r\n</div>"
+module.exports = "<div>\r\n\r\n  <div >\r\n    <mat-card class=\"results-display\">\r\n      <h6>Current Search   \r\n      <button mat-button (click)=\"clear()\" class=\"mat-button\">Unselect All</button></h6>\r\n    </mat-card>\r\n  </div>\r\n  <mat-selection-list [(ngModel)]=\"resultProducts\" (ngModelChange)=\"onProductListChange($event)\">\r\n    <mat-list-option *ngFor=\"let types of productList\" [value]=\"types\" [ngClass]=\"(!(resultProducts.includes(types))) ? 'Not-Selected': 'Selected'\">\r\n      {{types}}\r\n    </mat-list-option>\r\n  </mat-selection-list>\r\n</div>\r\n<!-- disabled=\"{{!(resultProducts.includes(types))}}\" -->"
 
 /***/ }),
 
@@ -452,14 +496,13 @@ var SearchHistoryComponent = /** @class */ (function () {
         this.productsEmitter = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
     }
     SearchHistoryComponent.prototype.ngOnInit = function () {
-        this.selectedOptions = this.resultProducts;
     };
     SearchHistoryComponent.prototype.clear = function () {
-        this.selectedOptions = [];
+        this.resultProducts = [];
     };
     SearchHistoryComponent.prototype.onProductListChange = function (event) {
         console.log(event.length);
-        this.productsEmitter.emit(this.selectedOptions);
+        this.productsEmitter.emit(this.resultProducts);
     };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
@@ -495,7 +538,7 @@ var SearchHistoryComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".container{\r\n    background-color: #eee;\r\n    margin: 0px;\r\n    max-width: 100%;\r\n    max-height: 100%;\r\n    padding-top : 5%;\r\n}\r\n\r\nimg{\r\n    width:100%;\r\n}\r\n\r\n.grid-container{\r\n    display: -ms-grid;\r\n    display: grid;\r\n    -ms-grid-columns: 70% 30%;\r\n        grid-template-columns: 70% 30%;\r\n    -ms-grid-rows: 500px 500px 500px;\r\n        grid-template-rows: 500px 500px 500px;\r\n    grid-row-gap: 5%;\r\n    grid-column-gap: 1%;\r\n    padding-top: 4%;\r\n    margin-right: 5%;\r\n    margin-left: 5%;\r\n    \r\n}\r\n\r\n.item{\r\n    -ms-grid-column: 2;\r\n        grid-column-start: 2;\r\n    -ms-grid-column-span: 1;\r\n    grid-column-end: 3;\r\n    border: solid darkgrey 3px;\r\n    -ms-grid-row:1;\r\n        grid-row-start:1; \r\n    -ms-grid-row-span: 1; \r\n    grid-row-end: 2;\r\n    OVERFLOW-Y:scroll;\r\n}\r\n\r\n.item-1{\r\n    -ms-grid-row: 1;\r\n        grid-row-start: 1;\r\n    -ms-grid-row-span: 3;\r\n    grid-row-end: 4;\r\n}\r\n\r\n.item-2{\r\n    -ms-grid-column: 2;\r\n        grid-column-start: 2;\r\n    -ms-grid-column-span: 1;\r\n    grid-column-end: 3;\r\n    border: solid darkgrey 3px;\r\n    height: 500px;\r\n    OVERFLOW-Y:scroll;\r\n\r\n}"
+module.exports = ".container{\r\n    background-color: #eee;\r\n    margin: 0px;\r\n    max-width: 100%;\r\n    max-height: 100%;\r\n    padding-top : 5%;\r\n}\r\n\r\nimg{\r\n    width:100%;\r\n}\r\n\r\n.grid-container{\r\n    display: -ms-grid;\r\n    display: grid;\r\n    background: #eee;\r\n    -ms-grid-columns: 70% 30%;\r\n        grid-template-columns: 70% 30%;\r\n    -ms-grid-rows: 100px 500px 500px;\r\n        grid-template-rows: 100px 500px 500px;\r\n    grid-row-gap: 2%;\r\n    grid-column-gap: 1%;\r\n    padding-top: 4%;\r\n    margin-right: 5%;\r\n    margin-left: 5%;\r\n    \r\n}\r\n\r\n.ease-Logo{\r\n    -ms-grid-column: 2;\r\n        grid-column-start: 2;\r\n    -ms-grid-column-span: 1;\r\n    grid-column-end: 3;\r\n    max-height: 100px;\r\n}\r\n\r\n.item{\r\n    -ms-grid-column: 2;\r\n        grid-column-start: 2;\r\n    -ms-grid-column-span: 1;\r\n    grid-column-end: 3;\r\n    border: solid darkgrey 3px;\r\n    OVERFLOW-Y:scroll;\r\n}\r\n\r\n.item-2{\r\n    -ms-grid-column: 2;\r\n        grid-column-start: 2;\r\n    -ms-grid-column-span: 1;\r\n    grid-column-end: 3;\r\n    border: solid darkgrey 3px;\r\n    height: 400px;\r\n    OVERFLOW-Y:scroll;\r\n\r\n}"
 
 /***/ }),
 
@@ -506,7 +549,7 @@ module.exports = ".container{\r\n    background-color: #eee;\r\n    margin: 0px;
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\r\n  <div>\r\n    <img src=\"http://localhost:8081/MHIbar.png\">\r\n  </div>\r\n  <app-query [filters]=\"filters\" *ngIf=\"filterAvailable\" (queryEmittor)=\"onInputs($event)\"> </app-query>\r\n\r\n  <div class=\"grid-container\" *ngIf=\"resultsAvailable\">\r\n    <div class=\"item-1 app-results\" *ngIf=\"(resultsAvailable && productSearchResultsAvailable)\">\r\n      <app-results [apiResponse]=\"apiResponse\" [resultsAvailable]=\"resultsAvailable\"></app-results>\r\n    </div>\r\n\r\n    <div class=\"item app-search-history\">\r\n      <app-search-history [productList]=\"productList\" [resultProducts]=\"resultProducts\"\r\n        *ngIf=\"(resultsAvailable && productListAvailable)\" (productsEmitter)=\"onProducts($event)\"> </app-search-history>\r\n    </div>\r\n\r\n    <!-- <div class=\"item app-facets\">\r\n      <app-facets [filters]=\"filters\" ></app-facets>\r\n    </div>\r\n     -->\r\n     <div class=\"item-2 app-facets\">\r\n      <app-facets [companyList]=\"companyList\" *ngIf=\"companyListAvailable\"></app-facets>\r\n    </div>\r\n  </div>\r\n\r\n</div>"
+module.exports = "<div class=\"container\">\r\n  <div>\r\n    <img src=\"https://s3.us-east-2.amazonaws.com/cichmedata/dist/assets/MHIbar.PNG\">\r\n  </div>\r\n  <app-query [filters]=\"filters\" *ngIf=\"filterAvailable\" [searchonProducts]=\"searchonProducts\" (queryEmittor)=\"onInputs($event)\"> </app-query>\r\n  <div id=\"progressBar\" *ngIf=\"searchInProgress\">\r\n      <mat-progress-bar mode=\"indeterminate\"></mat-progress-bar>\r\n    </div>\r\n    \r\n    <div id=\"progressBar\" *ngIf=\"!searchInProgress\">\r\n      <!-- Need to display a blank box of height = 4px here -->\r\n    </div>\r\n  <div class=\"grid-container\">\r\n    <div class=\"item-1 app-results\"  *ngIf=\"resultsAvailable\" >\r\n      <app-results [apiResponse]=\"apiResponse\" [searchQuery]=\"searchQuery\" [resultCount]=\"resultCount\" [resultsAvailable]=\"resultsAvailable\" [searchonProducts]=\"searchonProducts\" (pageEmitter)=\"onInputs($event)\"></app-results>\r\n    </div>\r\n    <div class=\"ease-Logo\">\r\n        <img src=\"https://s3.us-east-2.amazonaws.com/cichmedata/dist/assets/easeLogo2.PNG\">\r\n      </div>    \r\n    <div class=\"item app-search-history\">\r\n      <app-search-history [productList]=\"productList\" [resultProducts]=\"resultProducts\"\r\n        *ngIf=\"productListAvailable\" (productsEmitter)=\"onProducts($event)\"> </app-search-history>\r\n    </div>\r\n\r\n    <!-- <div class=\"item app-facets\">\r\n      <app-facets [filters]=\"filters\" ></app-facets>\r\n    </div>\r\n     -->\r\n     <div class=\"item-2 app-facets\" *ngIf=\"!searchInProgress\">\r\n      <app-facets [companyList]=\"companyList\" [productCompanyList]=\"productCompanyList\" *ngIf=\"companyListAvailable\"></app-facets>\r\n    </div>\r\n  </div>\r\n  <div style=\"clear:both\"></div>\r\n</div>"
 
 /***/ }),
 
@@ -537,12 +580,14 @@ var ToggleComponent = /** @class */ (function () {
     function ToggleComponent(apiService) {
         this.apiService = apiService;
         this.title = 'app';
+        this.searchonProducts = false;
         this.searchInProgress = false;
         this.resultsAvailable = false;
         this.errorOccured = false;
         this.apiResponse = '';
         this.resultProducts = '';
         this.filters = '';
+        this.productCompanyList = '';
         this.productList = '';
         this.companyList = '';
         this.filterAvailable = false;
@@ -556,8 +601,6 @@ var ToggleComponent = /** @class */ (function () {
         this.apiService.loadFilters().subscribe(function (response) {
             _this.filters = response;
             _this.filterAvailable = true;
-            console.log(_this.filterAvailable);
-            console.log(response);
         }, function (err) {
             _this.errorOccured = true;
             console.log("Error : " + JSON.stringify(err));
@@ -575,7 +618,6 @@ var ToggleComponent = /** @class */ (function () {
         this.apiService.companyList().subscribe(function (response) {
             _this.companyList = response;
             _this.companyListAvailable = true;
-            console.log(response);
         }, function (err) {
             _this.errorOccured = true;
             console.log("Error : " + JSON.stringify(err));
@@ -584,26 +626,49 @@ var ToggleComponent = /** @class */ (function () {
     //Drop down search
     ToggleComponent.prototype.onInputs = function (inputQuery) {
         var _this = this;
-        this.resultsAvailable = false;
         this.searchInProgress = true;
-        console.log(inputQuery);
-        if (inputQuery == "All Products") {
-            console.log("hiii");
-            this.apiService.loadAllProducts().subscribe(function (response) {
+        if (inputQuery[3] == 0) {
+            this.searchonProducts = false;
+        }
+        if (this.searchonProducts) {
+            this.productPaginator(inputQuery);
+        }
+        this.searchQuery = inputQuery[0];
+        //count
+        if (inputQuery[0] == "All Products") {
+            this.apiService.allProductsCount().subscribe(function (response) {
+                _this.resultCount = response;
+            }, function (err) {
+                _this.errorOccured = true;
+                _this.resultsAvailable = false;
+                console.log("Error : " + JSON.stringify(err));
+            });
+            //results
+            this.apiService.loadAllProducts(inputQuery[1], inputQuery[2]).subscribe(function (response) {
                 _this.apiResponse = response;
+                _this.resultsAvailable = true;
+                _this.resultProducts = _this.productList;
+                _this.prodCompanyList();
             }, function (err) {
                 _this.errorOccured = true;
                 _this.searchInProgress = false;
                 _this.resultsAvailable = false;
                 console.log("Error : " + JSON.stringify(err));
             });
-            this.resultsAvailable = true;
-            this.searchInProgress = false;
-            this.resultProducts = this.productList;
         }
         else {
             this.productListAvailable = false;
-            this.apiService.search(inputQuery).subscribe(function (response) {
+            //count
+            this.apiService.dropDownResultCount(inputQuery[0]).subscribe(function (response) {
+                _this.resultCount = response;
+            }, function (err) {
+                _this.errorOccured = true;
+                _this.searchInProgress = false;
+                _this.resultsAvailable = false;
+                console.log("Error : " + JSON.stringify(err));
+            });
+            //results
+            this.apiService.search(inputQuery[0], inputQuery[1], inputQuery[2]).subscribe(function (response) {
                 _this.apiResponse = response;
             }, function (err) {
                 _this.errorOccured = true;
@@ -612,7 +677,7 @@ var ToggleComponent = /** @class */ (function () {
                 console.log("Error : " + JSON.stringify(err));
             });
             //checkbox products in results
-            this.apiService.resultProducts(inputQuery).subscribe(function (response) {
+            this.apiService.resultProducts(inputQuery[0]).subscribe(function (response) {
                 _this.productListAvailable = true;
                 _this.resultProducts = response;
                 _this.resultsAvailable = true;
@@ -620,18 +685,69 @@ var ToggleComponent = /** @class */ (function () {
             }, function (err) {
                 console.log("Error : " + JSON.stringify(err));
             });
+            this.apiService.productCompanyList(this.resultProducts, this.resultProducts.length).subscribe(function (response) {
+                _this.productCompanyList = response;
+            }, function (err) {
+                _this.errorOccured = true;
+                _this.searchInProgress = false;
+                _this.resultsAvailable = false;
+                console.log("Error : " + JSON.stringify(err));
+            });
         }
     };
     //Search on product filter
     ToggleComponent.prototype.onProducts = function (selectedProducts) {
         var _this = this;
-        this.productSearchResultsAvailable = false;
         this.searchInProgress = true;
-        this.apiService.searchProduct(selectedProducts, selectedProducts.length).subscribe(function (response) {
+        this.searchonProducts = true;
+        this.productSearchResultsAvailable = false;
+        this.resultProducts = selectedProducts;
+        this.apiService.searchProduct(selectedProducts, selectedProducts.length, 10, 0).subscribe(function (response) {
+            _this.apiResponse = response;
+        }, function (err) {
+            _this.errorOccured = true;
+            _this.searchInProgress = false;
+            _this.resultsAvailable = false;
+            console.log("Error : " + JSON.stringify(err));
+        });
+        this.apiService.productSearchCount(selectedProducts, selectedProducts.length).subscribe(function (response) {
+            _this.resultCount = response;
+            _this.productSearchResultsAvailable = true;
+            _this.searchInProgress = false;
+        }, function (err) {
+            _this.errorOccured = true;
+            _this.searchInProgress = false;
+            _this.resultsAvailable = false;
+            console.log("Error : " + JSON.stringify(err));
+        });
+        this.apiService.productCompanyList(this.resultProducts, this.resultProducts.length).subscribe(function (response) {
+            _this.productCompanyList = response;
+        }, function (err) {
+            _this.errorOccured = true;
+            _this.searchInProgress = false;
+            _this.resultsAvailable = false;
+            console.log("Error : " + JSON.stringify(err));
+        });
+    };
+    ToggleComponent.prototype.productPaginator = function (input) {
+        var _this = this;
+        this.productSearchResultsAvailable = false;
+        this.apiService.searchProduct(this.resultProducts, this.resultProducts.length, input[1], input[2]).subscribe(function (response) {
             _this.productSearchResultsAvailable = true;
             _this.searchInProgress = false;
             _this.apiResponse = response;
-            console.log(response);
+        }, function (err) {
+            _this.errorOccured = true;
+            _this.searchInProgress = false;
+            _this.resultsAvailable = false;
+            console.log("Error : " + JSON.stringify(err));
+        });
+    };
+    ToggleComponent.prototype.prodCompanyList = function () {
+        var _this = this;
+        this.apiService.productCompanyList(this.productList, this.productList.length).subscribe(function (response) {
+            _this.searchInProgress = false;
+            _this.productCompanyList = response;
         }, function (err) {
             _this.errorOccured = true;
             _this.searchInProgress = false;
@@ -735,13 +851,15 @@ var APICallsService = /** @class */ (function () {
     function APICallsService(httpClient) {
         this.httpClient = httpClient;
     }
-    APICallsService.prototype.search = function (query) {
+    // Drop-down Search
+    APICallsService.prototype.search = function (query, pageSize, pageIndex) {
         var URL = apiURL + "search";
         var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]();
         headers.append('Content-Type', 'application/json');
-        var params = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpParams"]().set('query', query);
+        var params = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpParams"]().set('query', query).set('pageSize', pageSize.toString()).set('pageIndex', pageIndex.toString());
         return this.httpClient.get(URL, { headers: headers, params: params });
     };
+    //Drop-down Populate
     APICallsService.prototype.loadFilters = function () {
         var URL = apiURL + "filters";
         var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]();
@@ -749,6 +867,7 @@ var APICallsService = /** @class */ (function () {
         var params = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpParams"]();
         return this.httpClient.get(URL, { headers: headers, params: params });
     };
+    // List of all products
     APICallsService.prototype.productList = function () {
         var URL = apiURL + "allproducts";
         var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]();
@@ -756,6 +875,7 @@ var APICallsService = /** @class */ (function () {
         var params = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpParams"]();
         return this.httpClient.get(URL, { headers: headers, params: params });
     };
+    // List of all company
     APICallsService.prototype.companyList = function () {
         var URL = apiURL + "companyList";
         var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]();
@@ -763,6 +883,7 @@ var APICallsService = /** @class */ (function () {
         var params = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpParams"]();
         return this.httpClient.get(URL, { headers: headers, params: params });
     };
+    // List of products in results
     APICallsService.prototype.resultProducts = function (query) {
         var URL = apiURL + "resultProducts";
         var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]();
@@ -770,12 +891,13 @@ var APICallsService = /** @class */ (function () {
         var params = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpParams"]().set('query', query);
         return this.httpClient.get(URL, { headers: headers, params: params });
     };
-    APICallsService.prototype.searchProduct = function (query, length) {
+    // Serch from product List
+    APICallsService.prototype.searchProduct = function (query, length, pageSize, pageIndex) {
         var URL = apiURL + "productSearch";
         var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]();
         headers.append('Content-Type', 'application/json');
         var params = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpParams"]();
-        params = params.set('length', length.toString());
+        params = params.set('length', length.toString()).set('pageSize', pageSize.toString()).set('pageIndex', pageIndex.toString());
         var count = 0;
         for (var _i = 0, query_1 = query; _i < query_1.length; _i++) {
             var x = query_1[_i];
@@ -783,12 +905,56 @@ var APICallsService = /** @class */ (function () {
         }
         return this.httpClient.get(URL, { headers: headers, params: params });
     };
-    APICallsService.prototype.loadAllProducts = function () {
+    //Show results for all Products
+    APICallsService.prototype.loadAllProducts = function (pageSize, pageIndex) {
         var URL = apiURL + "allProductSearch";
-        console.log("HEREEEEEEEEEEEE");
+        var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]();
+        headers.append('Content-Type', 'application/json');
+        var params = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpParams"]().set('pageSize', pageSize.toString()).set('pageIndex', pageIndex.toString());
+        return this.httpClient.get(URL, { headers: headers, params: params });
+    };
+    //All products count
+    APICallsService.prototype.allProductsCount = function () {
+        var URL = apiURL + "allProductsCount";
         var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]();
         headers.append('Content-Type', 'application/json');
         var params = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpParams"]();
+        return this.httpClient.get(URL, { headers: headers, params: params });
+    };
+    //drop Down Result Count
+    APICallsService.prototype.dropDownResultCount = function (query) {
+        var URL = apiURL + "dropDownResultCount";
+        var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]();
+        headers.append('Content-Type', 'application/json');
+        var params = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpParams"]().set('query', query);
+        return this.httpClient.get(URL, { headers: headers, params: params });
+    };
+    //Product search Result Count
+    APICallsService.prototype.productSearchCount = function (query, length) {
+        var URL = apiURL + "productCount";
+        var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]();
+        headers.append('Content-Type', 'application/json');
+        var params = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpParams"]();
+        params = params.set('length', length.toString());
+        var count = 0;
+        for (var _i = 0, query_2 = query; _i < query_2.length; _i++) {
+            var x = query_2[_i];
+            params = params.set((count++).toString(), x);
+        }
+        return this.httpClient.get(URL, { headers: headers, params: params });
+    };
+    //Product search Result Count
+    APICallsService.prototype.productCompanyList = function (query, length) {
+        var URL = apiURL + "productCompanyList";
+        var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]();
+        headers.append('Content-Type', 'application/json');
+        var params = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpParams"]();
+        params = params.set('length', length.toString());
+        var count = 0;
+        for (var _i = 0, query_3 = query; _i < query_3.length; _i++) {
+            var x = query_3[_i];
+            params = params.set((count++).toString(), x);
+        }
         return this.httpClient.get(URL, { headers: headers, params: params });
     };
     APICallsService = __decorate([

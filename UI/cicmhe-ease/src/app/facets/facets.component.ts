@@ -10,13 +10,12 @@ export class FacetsComponent implements OnInit {
  
   @Input() filters:any;
   @Input() companyList:any;
-  selectedOptions : string[];
+  @Input() productCompanyList:any;
   
 
   constructor() { }
 
   ngOnInit() {
-    this.selectedOptions=this.companyList;
   }
 
 }

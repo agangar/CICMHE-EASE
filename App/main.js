@@ -16,10 +16,23 @@ app.use(express.static(path.join(__dirname, 'dist/assets')));
 //passing all api requests to controller
 app.use('/api', controller);
 
-app.use('*', (request, response) => {
+app.use('/js', express.static(__dirname + '/js'));
+app.use('/bower_components', express.static(__dirname + '/../bower_components'));
+app.use('/css', express.static(__dirname + '/css'));
+app.use('/partials', express.static(__dirname + '/partials'));
+app.get('/*', function(request, response,next){
 	console.log('Here');
-	response.sendFile(path.join(__dirname, 'dist/core.js'));
+	response.sendFile(path.join(__dirname, 'dist/main.js'));
 });
+
+
+
+// // Serve the index.html for all the other requests so that the
+// // router in the javascript app can render the necessary components
+// app.get('*',function(req,res){
+//   res.sendFile(path.join(__dirname+'/build/index.html'));
+//   //__dirname : It will resolve to your project folder.
+// });
 
 
 app.listen(port, ()=>{

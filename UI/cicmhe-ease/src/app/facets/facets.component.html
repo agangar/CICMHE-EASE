@@ -1,7 +1,13 @@
-<div class="containers">
-  <mat-selection-list [(ngModel)]="selectedOptions">
-    <mat-list-option *ngFor="let types of companyList" [value]="types">
-      {{types}}
-    </mat-list-option>
-  </mat-selection-list>
-</div>
+
+
+<mat-accordion>
+  <mat-expansion-panel (opened)="panelOpenState" (closed)="panelOpenState" *ngFor="let types of companyList">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{types.company}} <mat-icon *ngIf='(productCompanyList.includes(types.company))'>done</mat-icon>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <p>{{types.description}}</p>
+    <div class="company-link"><a href="{{ types.link }}" target="_blank">More Info >></a></div>  
+  </mat-expansion-panel>
+  </mat-accordion>

@@ -17,11 +17,13 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {MatOptionModule} from '@angular/material/';
 import {MatSelectModule} from '@angular/material/select';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import {MatListModule} from '@angular/material/list'
+import {MatIconModule} from '@angular/material/icon'
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http'; 
-
+import {MatExpansionModule} from '@angular/material/expansion'
 
 
 @NgModule({
@@ -45,7 +47,10 @@ import { HttpClientModule } from '@angular/common/http';
     MatOptionModule,
     MatSelectModule,
     MatPaginatorModule,
+    MatProgressBarModule,
+    MatIconModule,
     FormsModule,
+    MatExpansionModule,
     HttpClientModule,
     CommonModule
   ],

@@ -6,8 +6,8 @@
       <button mat-button (click)="clear()" class="mat-button">Unselect All</button></h6>
     </mat-card>
   </div>
-  <mat-selection-list [(ngModel)]="selectedOptions" (ngModelChange)="onProductListChange($event)">
-    <mat-list-option *ngFor="let types of productList" [value]="types" [ngClass]="(!(selectedOptions.includes(types))) ? 'Not-Selected': 'Selected'">
+  <mat-selection-list [(ngModel)]="resultProducts" (ngModelChange)="onProductListChange($event)">
+    <mat-list-option *ngFor="let types of productList" [value]="types" [ngClass]="(!(resultProducts.includes(types))) ? 'Not-Selected': 'Selected'">
       {{types}}
     </mat-list-option>
   </mat-selection-list>

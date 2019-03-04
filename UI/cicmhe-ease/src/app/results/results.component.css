@@ -32,4 +32,6 @@ img{
     box-sizing: border-box;
 }
 
-
+.paginator{
+    padding-left: 30%;
+}

@@ -44,7 +44,7 @@ router.get('/search*',(request,response) =>{
 		
 			
 
-		db.collection(constants.products_collection).aggregate([{ $sort: {"company":1}}, { $lookup: { from:"matrix", localField:"productName", foreignField: "productName", as:"xyz"  } },{$unwind:"$xyz"},{$match: filter},{ $project : { _id: 0, xyz: 0} } , { $limit: skips+limits },{ $skip: skips } ]).toArray(function(error, x){
+		db.collection(constants.products_collection).aggregate([{ $sort: {"company":1,"productName":1}}, { $lookup: { from:"matrix", localField:"productName", foreignField: "productName", as:"xyz"  } },{$unwind:"$xyz"},{$match: filter},{ $project : { _id: 0, xyz: 0} } , { $limit: skips+limits },{ $skip: skips } ]).toArray(function(error, x){
 			if(error) throw error;
 			for(var key in x){
 				x[key].company=x[key].company.toString().trim();
@@ -143,7 +143,7 @@ router.get('/productSearch',(request,response) =>{
 		var filter=[];
 		for(var i=0;i<length;i++)
 			filter.push(request.query[i.toString()]);
-		db.collection(constants.products_collection).aggregate([{$sort: {"company":1}},
+		db.collection(constants.products_collection).aggregate([{$sort: {"company":1,"productName":1}},
 			{ $match:  {productName: {$in: filter}} }, { $limit: skips+limits },{ $skip: skips } 
 			]).toArray(function(error, x){
 				if(error) throw error;
@@ -171,7 +171,7 @@ router.get('/allProductSearch', (request, response)=>{
 		var limits=Number(request.query.pageSize);
 		console.log(skips+" "+limits);
 		
-		db.collection(constants.products_collection).aggregate({$sort: {"company":1}},{ $limit: skips+limits },{ $skip: skips },{}).toArray(function(err, result) {
+		db.collection(constants.products_collection).aggregate({$sort: {"company":1,"productName":1}},{ $limit: skips+limits },{ $skip: skips },{}).toArray(function(err, result) {
 			if (err) throw err;
 			console.log(result);
 			for(var key in result){
@@ -187,7 +187,6 @@ router.get('/allProductSearch', (request, response)=>{
 	});
 });
 
-
 router.get('/companyList', (request, response)=>{
 	console.log('Inside /api/filters   Company List'); 
 	mongoClient.connect(constants.mongo_url, { useNewUrlParser: true }, (err, database) => {
@@ -197,9 +196,11 @@ router.get('/companyList', (request, response)=>{
 		}
 		var db = database.db(constants.ease_db);
 		
-		db.collection(constants.products_collection).distinct("company",function(err, result){
+		db.collection(constants.company).find().sort({company:1}).toArray(function(err, result) {
 			if (err) throw err;
-			result=result.sort();
+			for(var i=0;i<result.length;i++){
+				result[i].company=result[i].company.toString().trim();
+			}
 			response.send(JSON.stringify(result));
 		});
 		
@@ -245,7 +246,7 @@ router.get('/dropDownResultCount',(request,response) =>{
 		filter[query]=true;
 		console.log(filter);
 
-		db.collection(constants.products_collection).aggregate([{ $sort: {"company":1}}, { $lookup: { from:"matrix", localField:"productName", foreignField: "productName", as:"xyz"  } },{$unwind:"$xyz"},{$match: filter},{ $project : { _id: 0, xyz: 0} } , { $group: { _id: null, count: { $sum: 1 } } } ]).toArray(function(error, x){
+		db.collection(constants.products_collection).aggregate([{ $sort: {"company":1,"productName":1}}, { $lookup: { from:"matrix", localField:"productName", foreignField: "productName", as:"xyz"  } },{$unwind:"$xyz"},{$match: filter},{ $project : { _id: 0, xyz: 0} } , { $group: { _id: null, count: { $sum: 1 } } } ]).toArray(function(error, x){
 			if(error) throw error;
 			console.log(x[0].count);
 			// for(var key in x){
@@ -281,5 +282,30 @@ router.get('/productCount',(request,response) =>{
 
 		});
 });
+
+
+router.get('/productCompanyList',(request,response) =>{
+	console.log('Inside /api/products search  Company result for all products');
+
+	mongoClient.connect(constants.mongo_url, { useNewUrlParser: true }, (err, database) => {
+		if(err){
+			console.log('Error occured while trying to connect to database');
+			throw err;
+		}
+		var db = database.db(constants.ease_db);
+		var length=request.query.length;
+		var filter=[];
+		for(var i=0;i<length;i++)
+			filter.push(request.query[i.toString()]);
+		db.collection(constants.products_collection).distinct('company',{productName: {$in: filter}},function(error, x){
+				if(error) throw error;
+				for(var i=0;i<x.length;i++)
+					x[i]=x[i].trim();
+				response.send(JSON.stringify(x));
+				database.close();
+			});
+
+		});
+});
+
 module.exports = router;
-.

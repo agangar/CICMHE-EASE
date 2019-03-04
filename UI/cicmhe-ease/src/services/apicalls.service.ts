@@ -112,4 +112,17 @@ export class APICallsService {
       return this.httpClient.get(URL, { headers, params });
     }
 
+     //Product search Result Count
+     public productCompanyList(query: string[], length: number) {
+      var URL = apiURL + "productCompanyList";
+      let headers = new HttpHeaders();
+      headers.append('Content-Type', 'application/json');
+      let params = new HttpParams();
+      params = params.set('length', length.toString());
+      let count = 0;
+      for (let x of query)
+         params = params.set((count++).toString(), x);
+      return this.httpClient.get(URL, { headers, params });
+    }
+
 }

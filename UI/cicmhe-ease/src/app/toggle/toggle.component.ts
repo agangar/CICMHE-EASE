@@ -20,6 +20,7 @@ export class ToggleComponent {
   apiResponse: any = '';
   resultProducts: any = '';
   filters: any = '';
+  productCompanyList:any='';
   productList: any = '';
   companyList: any = '';
   filterAvailable: boolean = false;
@@ -71,6 +72,8 @@ export class ToggleComponent {
 
   //Drop down search
   public onInputs(inputQuery: any): void {
+    
+    this.searchInProgress = true;
     if (inputQuery[3] == 0) {
       this.searchonProducts = false;
     }
@@ -79,8 +82,6 @@ export class ToggleComponent {
     }
 
     this.searchQuery = inputQuery[0];
-    this.resultsAvailable = false;
-    this.searchInProgress = true;
     //count
     if (inputQuery[0] == "All Products") {
       this.apiService.allProductsCount().subscribe(
@@ -89,7 +90,6 @@ export class ToggleComponent {
         },
         err => {
           this.errorOccured = true;
-          this.searchInProgress = false;
           this.resultsAvailable = false;
           console.log("Error : " + JSON.stringify(err));
         });
@@ -98,6 +98,9 @@ export class ToggleComponent {
       this.apiService.loadAllProducts(inputQuery[1], inputQuery[2]).subscribe(
         response => {
           this.apiResponse = response;
+          this.resultsAvailable = true;
+          this.resultProducts = this.productList;
+          this.prodCompanyList();
         },
         err => {
           this.errorOccured = true;
@@ -105,9 +108,10 @@ export class ToggleComponent {
           this.resultsAvailable = false;
           console.log("Error : " + JSON.stringify(err));
         });
-      this.resultsAvailable = true;
-      this.searchInProgress = false;
-      this.resultProducts = this.productList;
+
+        
+  
+      
 
 
     } else {
@@ -119,7 +123,6 @@ export class ToggleComponent {
         },
         err => {
           this.errorOccured = true;
-          this.searchInProgress = false;
           this.resultsAvailable = false;
           console.log("Error : " + JSON.stringify(err));
         });
@@ -141,13 +144,14 @@ export class ToggleComponent {
         response => {
           this.productListAvailable = true;
           this.resultProducts = response;
-
+          this.resultsAvailable = true;
+          this.prodCompanyList();
         },
         err => {
           console.log("Error : " + JSON.stringify(err));
         });
-      this.resultsAvailable = true;
-      this.searchInProgress = false;
+  
+      
     }
   }
 
@@ -156,9 +160,9 @@ export class ToggleComponent {
 
   //Search on product filter
   public onProducts(selectedProducts: string[]): void {
+    this.searchInProgress = true;
     this.searchonProducts = true;
     this.productSearchResultsAvailable = false;
-    this.searchInProgress = true;
     this.resultProducts = selectedProducts;
     this.apiService.searchProduct(selectedProducts, selectedProducts.length,10,0).subscribe(
       response => {
@@ -176,17 +180,32 @@ export class ToggleComponent {
       this.apiService.productSearchCount(selectedProducts,selectedProducts.length).subscribe(
         response => {
           this.resultCount = response;
+          this.productSearchResultsAvailable = true;
+        this.searchInProgress = false;
+        },
+        err => {
+          this.errorOccured = true;
+          this.searchInProgress = false;
+          this.resultsAvailable = false;
+          
+          console.log("Error : " + JSON.stringify(err));
+        }
+      );
+
+      this.apiService.productCompanyList(this.resultProducts,this.resultProducts.length).subscribe(
+        response => {
+          
+          this.productCompanyList = response;
+  
         },
         err => {
           this.errorOccured = true;
           this.searchInProgress = false;
           this.resultsAvailable = false;
           console.log("Error : " + JSON.stringify(err));
-        }
-      );
+        });
 
-      this.productSearchResultsAvailable = true;
-        this.searchInProgress = false;
+      
 
   }
   public productPaginator(input:any){
@@ -204,7 +223,24 @@ export class ToggleComponent {
         this.resultsAvailable = false;
         console.log("Error : " + JSON.stringify(err));
       });
+      
+     
+      
   }
 
+  public prodCompanyList(){
+  this.apiService.productCompanyList(this.productList,this.productList.length).subscribe(
+    response => {
+      
+      this.searchInProgress = false;
+      this.productCompanyList = response;
 
+    },
+    err => {
+      this.errorOccured = true;
+      this.searchInProgress = false;
+      this.resultsAvailable = false;
+      console.log("Error : " + JSON.stringify(err));
+    });
+  }
 }
