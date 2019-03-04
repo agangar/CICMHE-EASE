@@ -195,7 +195,7 @@ var AppModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = ".export{\r\n    height:70px;\r\n}\r\n.Companylist{\r\n    height:325px;\r\n    OVERFLOW-Y:scroll;\r\n}\r\n.results-display{\r\n    background:#1e88e5;\r\n}\r\n.mat-button{\r\n    background: #eee;\r\n    \r\n}"
 
 /***/ }),
 
@@ -206,7 +206,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\r\n\r\n<mat-accordion>\r\n  <mat-expansion-panel (opened)=\"panelOpenState\" (closed)=\"panelOpenState\" *ngFor=\"let types of companyList\">\r\n    <mat-expansion-panel-header>\r\n      <mat-panel-title>\r\n        {{types.company}} <mat-icon *ngIf='(productCompanyList.includes(types.company))'>done</mat-icon>\r\n      </mat-panel-title>\r\n    </mat-expansion-panel-header>\r\n    <p>{{types.description}}</p>\r\n    <div class=\"company-link\"><a href=\"{{ types.link }}\" target=\"_blank\">More Info >></a></div>  \r\n  </mat-expansion-panel>\r\n  </mat-accordion>"
+module.exports = "<div>\r\n\r\n  <div id=\"export\">\r\n    <mat-card class=\"results-display\">\r\n      <h6>Company List\r\n        <button mat-button (click)=\"export()\" class=\"mat-button\">Export</button></h6>\r\n    </mat-card>\r\n  </div>\r\n  <div class=\"Companylist\">\r\n    <mat-accordion>\r\n      <mat-expansion-panel (opened)=\"panelOpenState\" (closed)=\"panelOpenState\" *ngFor=\"let types of companyList\">\r\n        <mat-expansion-panel-header>\r\n          <mat-panel-title>\r\n            {{types.company}} <mat-icon *ngIf='(productCompanyList.includes(types.company))'>done</mat-icon>\r\n          </mat-panel-title>\r\n        </mat-expansion-panel-header>\r\n        <p>{{types.description}}</p>\r\n        <div class=\"company-link\"><a href=\"{{ types.link }}\" target=\"_blank\">More Info >></a></div>\r\n      </mat-expansion-panel>\r\n    </mat-accordion>\r\n  </div>"
 
 /***/ }),
 
@@ -221,6 +221,8 @@ module.exports = "\r\n\r\n<mat-accordion>\r\n  <mat-expansion-panel (opened)=\"p
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FacetsComponent", function() { return FacetsComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var xlsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! xlsx */ "./node_modules/xlsx/xlsx.js");
+/* harmony import */ var xlsx__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(xlsx__WEBPACK_IMPORTED_MODULE_1__);
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -231,10 +233,23 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
 var FacetsComponent = /** @class */ (function () {
     function FacetsComponent() {
     }
     FacetsComponent.prototype.ngOnInit = function () {
+    };
+    FacetsComponent.prototype.export = function () {
+        var _this = this;
+        var workBook = xlsx__WEBPACK_IMPORTED_MODULE_1__["utils"].book_new(); // create a new blank book
+        var exportList = [];
+        this.companyList.forEach(function (element) {
+            if (_this.productCompanyList.includes(element.company))
+                exportList.push(element);
+        });
+        var workSheet = xlsx__WEBPACK_IMPORTED_MODULE_1__["utils"].json_to_sheet(exportList);
+        xlsx__WEBPACK_IMPORTED_MODULE_1__["utils"].book_append_sheet(workBook, workSheet, 'data'); // add the worksheet to the book
+        xlsx__WEBPACK_IMPORTED_MODULE_1__["writeFile"](workBook, 'CompanyList.xlsx');
     };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
@@ -270,7 +285,7 @@ var FacetsComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "mat-card{\r\n    padding: 1%;\r\n    width: 90%;\r\n    border: solid darkgrey 1px;\r\n}\r\n\r\nmat-form-field{\r\n    width: 80%;\r\n    padding: 0.5%;\r\n    margin-left: 2%\r\n}\r\n\r\nbutton{\r\n    background-color: blue;\r\n    margin-left: 3%;\r\n    color : white;\r\n}"
+module.exports = "mat-card{\r\n    padding: 1%;\r\n    width: 90%;\r\n    border: solid darkgrey 1px;\r\n}\r\n\r\nmat-form-field{\r\n    width: 95%;\r\n    padding: 0.5%;\r\n    margin-left: 2%\r\n}\r\n\r\nbutton{\r\n    background-color: blue;\r\n    margin-left: 3%;\r\n    color : white;\r\n}"
 
 /***/ }),
 
@@ -281,7 +296,7 @@ module.exports = "mat-card{\r\n    padding: 1%;\r\n    width: 90%;\r\n    border
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\r\n  <p>Materials Handling Activities Solutions</p>\r\n  <mat-card>\r\n    <mat-form-field>\r\n      <mat-select placeholder=\"Material Handling Application\" [(value)]=\"query\">\r\n        <mat-option *ngFor=\"let types of filters\" [value]=\"types.taskName\">\r\n          {{types.taskName}} ({{ types.description }})\r\n        </mat-option>\r\n      </mat-select>\r\n    </mat-form-field>\r\n    <!---<input matInput type=\"text\" placeholder=\"Enter Keywords\" [(ngModel)]=\"queryText\" (keypress)=\"handleEnter($event.keyCode)\">-->\r\n    <button (click)=\"search()\" mat-button><b>Search</b></button>\r\n  </mat-card>\r\n</div>"
+module.exports = "<div class=\"container\">\r\n  <p>Materials Handling Activities Solutions</p>\r\n  <mat-card>\r\n    <mat-form-field>\r\n      <mat-select placeholder=\"Material Handling Application\" (ngModelChange)=\"onSelect($event)\" [(ngModel)]=\"query\">\r\n        <mat-option *ngFor=\"let types of filters\" [value]=\"types.taskName\">\r\n          {{types.taskName}} ({{ types.description }})\r\n        </mat-option>\r\n      </mat-select>\r\n    </mat-form-field>\r\n    <!---<input matInput type=\"text\" placeholder=\"Enter Keywords\" [(ngModel)]=\"queryText\" (keypress)=\"handleEnter($event.keyCode)\">-->\r\n    <!-- <button (click)=\"search()\" mat-button><b>Search</b></button> -->\r\n  </mat-card>\r\n</div>"
 
 /***/ }),
 
@@ -314,13 +329,9 @@ var QueryComponent = /** @class */ (function () {
     QueryComponent.prototype.ngOnInit = function () {
         console.log(this.filters);
     };
-    QueryComponent.prototype.search = function () {
-        this.queryEmittor.emit([this.query, 10, 0, 0]);
-    };
-    QueryComponent.prototype.handleEnter = function (keyCode) {
-        if (keyCode == 13) {
-            this.search();
-        }
+    QueryComponent.prototype.onSelect = function (event) {
+        console.log(event);
+        this.queryEmittor.emit([event, 10, 0, 0]);
     };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
@@ -355,7 +366,7 @@ var QueryComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "::ng-deep .mat-grid-tile .mat-figure{\r\n    margin-right: 5%;\r\n    margin-left: 5%;\r\n    height:10%;\r\n    /* width:50%; */\r\n    padding-top: 5%;\r\n    box-sizing: content-box;\r\n    \r\n    display: flow-root;\r\n}\r\n\r\nvideo{\r\n    width:  250px;\r\n    height: 200px;\r\n}\r\n\r\nimg{\r\n    width:  250px;\r\n    height: 200px;\r\n    \r\n    \r\n}\r\n\r\n.media{\r\n    /* border: solid black 2px; */\r\n    box-sizing: border-box;\r\n\r\n}\r\n\r\n.container{\r\n    \r\n    border: solid black 2px;\r\n    max-width: -webkit-min-content;\r\n    max-width: -moz-min-content;\r\n    max-width: min-content;\r\n    box-sizing: border-box;\r\n}\r\n\r\n\r\n"
+module.exports = "::ng-deep .mat-grid-tile .mat-figure{\r\n    margin-right: 5%;\r\n    margin-left: 5%;\r\n    height:10%;\r\n    /* width:50%; */\r\n    padding-top: 5%;\r\n    box-sizing: content-box;\r\n    \r\n    display: flow-root;\r\n}\r\n\r\nvideo{\r\n    width:  250px;\r\n    height: 200px;\r\n}\r\n\r\nimg{\r\n    width:  250px;\r\n    height: 200px;\r\n    \r\n    \r\n}\r\n\r\n.media{\r\n    /* border: solid black 2px; */\r\n    box-sizing: border-box;\r\n\r\n}\r\n\r\n.container{\r\n    \r\n    border: solid black 2px;\r\n    max-width: -webkit-min-content;\r\n    max-width: -moz-min-content;\r\n    max-width: min-content;\r\n    box-sizing: border-box;\r\n}\r\n\r\n.paginator{\r\n    padding-left: 30%;\r\n}\r\n\r\n.results{\r\n    background: #eee;\r\n}"
 
 /***/ }),
 
@@ -366,7 +377,7 @@ module.exports = "::ng-deep .mat-grid-tile .mat-figure{\r\n    margin-right: 5%;
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div >\r\n    <h5>Found {{resultCount}} items for your search</h5>\r\n    <mat-grid-list cols=\"2\">\r\n        <mat-grid-tile class=\"mat-grid-tile\" *ngFor=\"let x of apiResponse\">\r\n            <div class=\"container\">\r\n                <div class=\"row\">\r\n\r\n                    <div class=\"media\" title=\"{{x.description}}\"\r\n                        *ngIf=\"x.fileType == 'mp4' || x.fileType == 'mkv' ||  x.fileType =='mov' ||  x.fileType =='flv' || x.fileType =='wmv'\">\r\n                        <video controls (click)=\"toggleVideo()\" id=\"videoPlayer\">\r\n                            <source\r\n                                src=\"https://s3.us-east-2.amazonaws.com/cichmedata/dist/assets/Data/{{x.company}}/{{x.assetID}}.mp4\"\r\n                                onError=\"this.src='http://localhost:8081/NotFound.jpg';\" type=\"video/mp4\" />\r\n                        </video>\r\n                    </div>\r\n                    <div class=\"media\"\r\n                        *ngIf=\"x.fileType != 'mp4' && x.fileType != 'mkv' &&  x.fileType !='mov' &&  x.fileType !='flv' &&  x.fileType !='wmv'\">\r\n                        <img title=\"{{x.description}}\"\r\n                            src=\"https://s3.us-east-2.amazonaws.com/cichmedata/dist/assets/Data/{{x.company}}/{{x.assetID}}.{{x.fileType}}\"\r\n                            onError=\"this.src='http://localhost:8081/NotFound.jpg';\">\r\n                    </div>\r\n                </div>\r\n                <div class=\"row productName\">\r\n                    <h6> {{x.productName}} </h6>\r\n                </div>\r\n                <div class=\"row company\">\r\n                    Manufacturer: {{x.company}}\r\n                </div>\r\n                <div class=\"row description\">\r\n                    {{x.description}}\r\n                </div>\r\n            </div>\r\n\r\n        </mat-grid-tile>\r\n    </mat-grid-list>\r\n    <div class=\"row paginator\">\r\n        <mat-paginator [length]=\"resultCount\" [pageSize]=\"pageSize\" [pageSizeOptions]=\"[5, 10, 25]\"\r\n            (page)=\"handlePaginatorEvent($event)\">\r\n        </mat-paginator>\r\n    </div>\r\n</div>"
+module.exports = "<div class=\"results\" >\r\n    <h5>Found {{resultCount}} items for your search</h5>\r\n    <mat-grid-list cols=\"2\">\r\n        <mat-grid-tile class=\"mat-grid-tile\" *ngFor=\"let x of apiResponse\">\r\n            <div class=\"container\">\r\n                <div class=\"row\">\r\n\r\n                    <div class=\"media\" title=\"{{x.description}}\"\r\n                        *ngIf=\"x.fileType == 'mp4' || x.fileType == 'mkv' ||  x.fileType =='mov' ||  x.fileType =='flv' || x.fileType =='wmv'\">\r\n                        <video controls (click)=\"toggleVideo()\" id=\"videoPlayer\">\r\n                            <source\r\n                                src=\"https://s3.us-east-2.amazonaws.com/cichmedata/dist/assets/Data/{{x.company}}/{{x.assetID}}.mp4\"\r\n                                onError=\"this.src='https://s3.us-east-2.amazonaws.com/cichmedata/dist/assets/NotFound.jpg';\" type=\"video/mp4\" />\r\n                        </video>\r\n                    </div>\r\n                    <div class=\"media\"\r\n                        *ngIf=\"x.fileType != 'mp4' && x.fileType != 'mkv' &&  x.fileType !='mov' &&  x.fileType !='flv' &&  x.fileType !='wmv'\">\r\n                        <img title=\"{{x.description}}\"\r\n                            src=\"https://s3.us-east-2.amazonaws.com/cichmedata/dist/assets/Data/{{x.company}}/{{x.assetID}}.{{x.fileType}}\"\r\n                            onError=\"this.src='https://s3.us-east-2.amazonaws.com/cichmedata/dist/assets/NotFound.jpg';\">\r\n                    </div>\r\n                </div>\r\n                <div class=\"row productName\">\r\n                    <h6> {{x.productName}} </h6>\r\n                </div>\r\n                <div class=\"row company\">\r\n                    Manufacturer: {{x.company}}\r\n                </div>\r\n                <div class=\"row description\">\r\n                    {{x.description}}\r\n                </div>\r\n            </div>\r\n\r\n        </mat-grid-tile>\r\n    </mat-grid-list>\r\n    <div class=\"row paginator\">\r\n        <mat-paginator [length]=\"resultCount\" [pageSize]=\"pageSize\" [pageSizeOptions]=\"[5, 10, 25]\"\r\n            (page)=\"handlePaginatorEvent($event)\">\r\n        </mat-paginator>\r\n    </div>\r\n</div>"
 
 /***/ }),
 
@@ -455,7 +466,7 @@ var ResultsComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".containerz{\r\n    max-height: 50%;\r\n    OVERFLOW-Y:scroll;\r\n}\r\n\r\nh4{\r\n\r\n    color: white;\r\n}\r\n\r\n.results-display{\r\n    background:#1e88e5;\r\n}\r\n\r\n.mat-button{\r\n    background: #eee;\r\n    \r\n}\r\n\r\n.Not-Selected{\r\n    -webkit-filter: opacity(0.5);\r\n            filter: opacity(0.5);\r\n}"
+module.exports = ".containerz{\r\n    max-height: 50%;\r\n    OVERFLOW-Y:scroll;\r\n}\r\n\r\nh4{\r\n\r\n    color: white;\r\n}\r\n\r\n.results-display{\r\n    background:#1e88e5;\r\n}\r\n\r\n.mat-button{\r\n    background: #eee;\r\n    \r\n}\r\n\r\n.Not-Selected{\r\n    -webkit-filter: opacity(0.5);\r\n            filter: opacity(0.5);\r\n}\r\n\r\n.Lists{\r\n    height:430px;\r\n    OVERFLOW-Y:scroll;\r\n}\r\n\r\n.searchdetails{\r\n    height: 70px;\r\n}"
 
 /***/ }),
 
@@ -466,7 +477,7 @@ module.exports = ".containerz{\r\n    max-height: 50%;\r\n    OVERFLOW-Y:scroll;
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\r\n\r\n  <div >\r\n    <mat-card class=\"results-display\">\r\n      <h6>Current Search   \r\n      <button mat-button (click)=\"clear()\" class=\"mat-button\">Unselect All</button></h6>\r\n    </mat-card>\r\n  </div>\r\n  <mat-selection-list [(ngModel)]=\"resultProducts\" (ngModelChange)=\"onProductListChange($event)\">\r\n    <mat-list-option *ngFor=\"let types of productList\" [value]=\"types\" [ngClass]=\"(!(resultProducts.includes(types))) ? 'Not-Selected': 'Selected'\">\r\n      {{types}}\r\n    </mat-list-option>\r\n  </mat-selection-list>\r\n</div>\r\n<!-- disabled=\"{{!(resultProducts.includes(types))}}\" -->"
+module.exports = "<div>\r\n\r\n  <div id=\"searchdetails\">\r\n    <mat-card class=\"results-display\">\r\n      <h6>Current Search   \r\n      <button mat-button (click)=\"clear()\" class=\"mat-button\">Unselect All</button></h6>\r\n    </mat-card>\r\n  </div>\r\n  <div class=\"Lists\">\r\n  <mat-selection-list [(ngModel)]=\"resultProducts\" (ngModelChange)=\"onProductListChange($event)\">\r\n    <mat-list-option *ngFor=\"let types of productList\" [value]=\"types\" [ngClass]=\"(!(resultProducts.includes(types))) ? 'Not-Selected': 'Selected'\">\r\n      {{types}}\r\n    </mat-list-option>\r\n  </mat-selection-list>\r\n</div>\r\n</div>\r\n<!-- disabled=\"{{!(resultProducts.includes(types))}}\" -->"
 
 /***/ }),
 
@@ -538,7 +549,7 @@ var SearchHistoryComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".container{\r\n    background-color: #eee;\r\n    margin: 0px;\r\n    max-width: 100%;\r\n    max-height: 100%;\r\n    padding-top : 5%;\r\n}\r\n\r\nimg{\r\n    width:100%;\r\n}\r\n\r\n.grid-container{\r\n    display: -ms-grid;\r\n    display: grid;\r\n    background: #eee;\r\n    -ms-grid-columns: 70% 30%;\r\n        grid-template-columns: 70% 30%;\r\n    -ms-grid-rows: 100px 500px 500px;\r\n        grid-template-rows: 100px 500px 500px;\r\n    grid-row-gap: 2%;\r\n    grid-column-gap: 1%;\r\n    padding-top: 4%;\r\n    margin-right: 5%;\r\n    margin-left: 5%;\r\n    \r\n}\r\n\r\n.ease-Logo{\r\n    -ms-grid-column: 2;\r\n        grid-column-start: 2;\r\n    -ms-grid-column-span: 1;\r\n    grid-column-end: 3;\r\n    max-height: 100px;\r\n}\r\n\r\n.item{\r\n    -ms-grid-column: 2;\r\n        grid-column-start: 2;\r\n    -ms-grid-column-span: 1;\r\n    grid-column-end: 3;\r\n    border: solid darkgrey 3px;\r\n    OVERFLOW-Y:scroll;\r\n}\r\n\r\n.item-2{\r\n    -ms-grid-column: 2;\r\n        grid-column-start: 2;\r\n    -ms-grid-column-span: 1;\r\n    grid-column-end: 3;\r\n    border: solid darkgrey 3px;\r\n    height: 400px;\r\n    OVERFLOW-Y:scroll;\r\n\r\n}"
+module.exports = ".container{\r\n    background-color: #eee;\r\n    margin: 0px;\r\n    max-width: 100%;\r\n    padding-top : 5%;\r\n}\r\n\r\nimg{\r\n    width:100%;\r\n}\r\n\r\n.grid-container{\r\n    display: -ms-grid;\r\n    display: grid;\r\n    background: #eee;\r\n    -ms-grid-columns: 70% 30%;\r\n        grid-template-columns: 70% 30%;\r\n    -ms-grid-rows: 100px 500px 400px max-content;\r\n        grid-template-rows: 100px 500px 400px -webkit-max-content;\r\n        grid-template-rows: 100px 500px 400px max-content;\r\n    grid-row-gap: 2%;\r\n    grid-column-gap: 1%;\r\n    padding-top: 4%;\r\n    margin-right: 5%;\r\n    margin-left: 5%;\r\n    \r\n}\r\n\r\n.ease-Logo{\r\n    -ms-grid-column: 2;\r\n        grid-column-start: 2;\r\n    -ms-grid-column-span: 1;\r\n    grid-column-end: 3;\r\n    max-height: 100px;\r\n}\r\n\r\n.itemz{\r\n    -ms-grid-column: 2;\r\n        grid-column-start: 2;\r\n    -ms-grid-column-span: 1;\r\n    grid-column-end: 3;\r\n    border: solid darkgrey 3px;\r\n    \r\n}\r\n\r\n.item-1{\r\n    -ms-grid-column: 1;\r\n        grid-column-start: 1;\r\n    -ms-grid-column-span: 1;\r\n    grid-column-end: 2;\r\n}\r\n\r\n.item-2{\r\n    -ms-grid-column: 2;\r\n        grid-column-start: 2;\r\n    -ms-grid-column-span: 1;\r\n    grid-column-end: 3;\r\n    border: solid darkgrey 3px;\r\n    height: 400px;\r\n    \r\n\r\n}\r\n\r\n.Blank{\r\n    -ms-grid-column: 2;\r\n        grid-column-start: 2;\r\n    -ms-grid-column-span: 1;\r\n    grid-column-end: 3;\r\n    height: -webkit-fill-available;\r\n}"
 
 /***/ }),
 
@@ -549,7 +560,7 @@ module.exports = ".container{\r\n    background-color: #eee;\r\n    margin: 0px;
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\r\n  <div>\r\n    <img src=\"https://s3.us-east-2.amazonaws.com/cichmedata/dist/assets/MHIbar.PNG\">\r\n  </div>\r\n  <app-query [filters]=\"filters\" *ngIf=\"filterAvailable\" [searchonProducts]=\"searchonProducts\" (queryEmittor)=\"onInputs($event)\"> </app-query>\r\n  <div id=\"progressBar\" *ngIf=\"searchInProgress\">\r\n      <mat-progress-bar mode=\"indeterminate\"></mat-progress-bar>\r\n    </div>\r\n    \r\n    <div id=\"progressBar\" *ngIf=\"!searchInProgress\">\r\n      <!-- Need to display a blank box of height = 4px here -->\r\n    </div>\r\n  <div class=\"grid-container\">\r\n    <div class=\"item-1 app-results\"  *ngIf=\"resultsAvailable\" >\r\n      <app-results [apiResponse]=\"apiResponse\" [searchQuery]=\"searchQuery\" [resultCount]=\"resultCount\" [resultsAvailable]=\"resultsAvailable\" [searchonProducts]=\"searchonProducts\" (pageEmitter)=\"onInputs($event)\"></app-results>\r\n    </div>\r\n    <div class=\"ease-Logo\">\r\n        <img src=\"https://s3.us-east-2.amazonaws.com/cichmedata/dist/assets/easeLogo2.PNG\">\r\n      </div>    \r\n    <div class=\"item app-search-history\">\r\n      <app-search-history [productList]=\"productList\" [resultProducts]=\"resultProducts\"\r\n        *ngIf=\"productListAvailable\" (productsEmitter)=\"onProducts($event)\"> </app-search-history>\r\n    </div>\r\n\r\n    <!-- <div class=\"item app-facets\">\r\n      <app-facets [filters]=\"filters\" ></app-facets>\r\n    </div>\r\n     -->\r\n     <div class=\"item-2 app-facets\" *ngIf=\"!searchInProgress\">\r\n      <app-facets [companyList]=\"companyList\" [productCompanyList]=\"productCompanyList\" *ngIf=\"companyListAvailable\"></app-facets>\r\n    </div>\r\n  </div>\r\n  <div style=\"clear:both\"></div>\r\n</div>"
+module.exports = "<div class=\"container\">\r\n  <div>\r\n    <img src=\"https://s3.us-east-2.amazonaws.com/cichmedata/dist/assets/MHIbar.PNG\">\r\n  </div>\r\n  <app-query [filters]=\"filters\" *ngIf=\"filterAvailable\" [searchonProducts]=\"searchonProducts\"\r\n    (queryEmittor)=\"onInputs($event)\"> </app-query>\r\n  <div id=\"progressBar\" *ngIf=\"searchInProgress\">\r\n    <mat-progress-bar mode=\"indeterminate\"></mat-progress-bar>\r\n  </div>\r\n\r\n  <div id=\"progressBar\" *ngIf=\"!searchInProgress\">\r\n    <!-- Need to display a blank box of height = 4px here -->\r\n  </div>\r\n  <div class=\"grid-container\">\r\n    <div class=\"item-1 app-results\" *ngIf=\"resultsAvailable\">\r\n      <app-results [apiResponse]=\"apiResponse\" [searchQuery]=\"searchQuery\" [resultCount]=\"resultCount\"\r\n        [resultsAvailable]=\"resultsAvailable\" [searchonProducts]=\"searchonProducts\" (pageEmitter)=\"onInputs($event)\">\r\n      </app-results>\r\n    </div>\r\n    <div class=\"ease-Logo\">\r\n      <img src=\"https://s3.us-east-2.amazonaws.com/cichmedata/dist/assets/easeLogo2.PNG\">\r\n    </div>\r\n    <div class=\"itemz app-search-history\" *ngIf=\"resultsAvailable\">\r\n      <app-search-history [productList]=\"productList\" [resultProducts]=\"resultProducts\" *ngIf=\"productListAvailable\"\r\n        (productsEmitter)=\"onProducts($event)\"> </app-search-history>\r\n    </div>\r\n\r\n    <!-- <div class=\"item app-facets\">\r\n      <app-facets [filters]=\"filters\" ></app-facets>\r\n    </div>\r\n     -->\r\n    <div class=\"item-2 app-facets\" *ngIf=\"!searchInProgress && resultsAvailable\">\r\n      <app-facets [companyList]=\"companyList\" [productCompanyList]=\"productCompanyList\" *ngIf=\"companyListAvailable\">\r\n      </app-facets>\r\n    </div>\r\n    <div class=\"Blank\">\r\n\r\n    </div>\r\n  </div>\r\n  <div style=\"clear:both\"></div>\r\n</div>"
 
 /***/ }),
 
@@ -663,7 +674,6 @@ var ToggleComponent = /** @class */ (function () {
                 _this.resultCount = response;
             }, function (err) {
                 _this.errorOccured = true;
-                _this.searchInProgress = false;
                 _this.resultsAvailable = false;
                 console.log("Error : " + JSON.stringify(err));
             });
@@ -681,16 +691,8 @@ var ToggleComponent = /** @class */ (function () {
                 _this.productListAvailable = true;
                 _this.resultProducts = response;
                 _this.resultsAvailable = true;
-                _this.searchInProgress = false;
+                _this.prodCompanyList();
             }, function (err) {
-                console.log("Error : " + JSON.stringify(err));
-            });
-            this.apiService.productCompanyList(this.resultProducts, this.resultProducts.length).subscribe(function (response) {
-                _this.productCompanyList = response;
-            }, function (err) {
-                _this.errorOccured = true;
-                _this.searchInProgress = false;
-                _this.resultsAvailable = false;
                 console.log("Error : " + JSON.stringify(err));
             });
         }
@@ -979,6 +981,39 @@ var APICallsService = /** @class */ (function () {
 
 module.exports = __webpack_require__(/*! D:\IE\CICMHE-EASE\UI\cicmhe-ease\src\main.ts */"./src/main.ts");
 
+
+/***/ }),
+
+/***/ 1:
+/*!********************!*\
+  !*** fs (ignored) ***!
+  \********************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+/* (ignored) */
+
+/***/ }),
+
+/***/ 2:
+/*!************************!*\
+  !*** crypto (ignored) ***!
+  \************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+/* (ignored) */
+
+/***/ }),
+
+/***/ 3:
+/*!************************!*\
+  !*** stream (ignored) ***!
+  \************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+/* (ignored) */
 
 /***/ })
 

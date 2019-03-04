@@ -1,0 +1,14 @@
+.export{
+    height:70px;
+}
+.Companylist{
+    height:325px;
+    OVERFLOW-Y:scroll;
+}
+.results-display{
+    background:#1e88e5;
+}
+.mat-button{
+    background: #eee;
+    
+}

@@ -2,32 +2,39 @@
   <div>
     <img src="https://s3.us-east-2.amazonaws.com/cichmedata/dist/assets/MHIbar.PNG">
   </div>
-  <app-query [filters]="filters" *ngIf="filterAvailable" [searchonProducts]="searchonProducts" (queryEmittor)="onInputs($event)"> </app-query>
+  <app-query [filters]="filters" *ngIf="filterAvailable" [searchonProducts]="searchonProducts"
+    (queryEmittor)="onInputs($event)"> </app-query>
   <div id="progressBar" *ngIf="searchInProgress">
-      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
-    </div>
-    
-    <div id="progressBar" *ngIf="!searchInProgress">
-      <!-- Need to display a blank box of height = 4px here -->
-    </div>
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+  </div>
+
+  <div id="progressBar" *ngIf="!searchInProgress">
+    <!-- Need to display a blank box of height = 4px here -->
+  </div>
   <div class="grid-container">
-    <div class="item-1 app-results"  *ngIf="resultsAvailable" >
-      <app-results [apiResponse]="apiResponse" [searchQuery]="searchQuery" [resultCount]="resultCount" [resultsAvailable]="resultsAvailable" [searchonProducts]="searchonProducts" (pageEmitter)="onInputs($event)"></app-results>
+    <div class="item-1 app-results" *ngIf="resultsAvailable">
+      <app-results [apiResponse]="apiResponse" [searchQuery]="searchQuery" [resultCount]="resultCount"
+        [resultsAvailable]="resultsAvailable" [searchonProducts]="searchonProducts" (pageEmitter)="onInputs($event)">
+      </app-results>
     </div>
     <div class="ease-Logo">
-        <img src="https://s3.us-east-2.amazonaws.com/cichmedata/dist/assets/easeLogo2.PNG">
-      </div>    
-    <div class="item app-search-history"  *ngIf="resultsAvailable">
-      <app-search-history [productList]="productList" [resultProducts]="resultProducts"
-        *ngIf="productListAvailable" (productsEmitter)="onProducts($event)"> </app-search-history>
+      <img src="https://s3.us-east-2.amazonaws.com/cichmedata/dist/assets/easeLogo2.PNG">
+    </div>
+    <div class="itemz app-search-history" *ngIf="resultsAvailable">
+      <app-search-history [productList]="productList" [resultProducts]="resultProducts" *ngIf="productListAvailable"
+        (productsEmitter)="onProducts($event)"> </app-search-history>
     </div>
 
     <!-- <div class="item app-facets">
       <app-facets [filters]="filters" ></app-facets>
     </div>
      -->
-     <div class="item-2 app-facets" *ngIf="!searchInProgress && resultsAvailable">
-      <app-facets [companyList]="companyList" [productCompanyList]="productCompanyList" *ngIf="companyListAvailable"></app-facets>
+    <div class="item-2 app-facets" *ngIf="!searchInProgress && resultsAvailable">
+      <app-facets [companyList]="companyList" [productCompanyList]="productCompanyList" *ngIf="companyListAvailable">
+      </app-facets>
+    </div>
+    <div class="Blank">
+
     </div>
   </div>
   <div style="clear:both"></div>

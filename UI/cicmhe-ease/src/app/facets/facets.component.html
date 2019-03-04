@@ -1,13 +1,21 @@
+<div>
 
-
-<mat-accordion>
-  <mat-expansion-panel (opened)="panelOpenState" (closed)="panelOpenState" *ngFor="let types of companyList">
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        {{types.company}} <mat-icon *ngIf='(productCompanyList.includes(types.company))'>done</mat-icon>
-      </mat-panel-title>
-    </mat-expansion-panel-header>
-    <p>{{types.description}}</p>
-    <div class="company-link"><a href="{{ types.link }}" target="_blank">More Info >></a></div>  
-  </mat-expansion-panel>
-  </mat-accordion>
+  <div id="export">
+    <mat-card class="results-display">
+      <h6>Company List
+        <button mat-button (click)="export()" class="mat-button">Export</button></h6>
+    </mat-card>
+  </div>
+  <div class="Companylist">
+    <mat-accordion>
+      <mat-expansion-panel (opened)="panelOpenState" (closed)="panelOpenState" *ngFor="let types of companyList">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{types.company}} <mat-icon *ngIf='(productCompanyList.includes(types.company))'>done</mat-icon>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <p>{{types.description}}</p>
+        <div class="company-link"><a href="{{ types.link }}" target="_blank">More Info >></a></div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>

@@ -2,7 +2,6 @@
     background-color: #eee;
     margin: 0px;
     max-width: 100%;
-    max-height: 100%;
     padding-top : 5%;
 }
 
@@ -13,7 +12,7 @@ img{
     display: grid;
     background: #eee;
     grid-template-columns: 70% 30%;
-    grid-template-rows: 100px 500px 500px;
+    grid-template-rows: 100px 500px 400px max-content;
     grid-row-gap: 2%;
     grid-column-gap: 1%;
     padding-top: 4%;
@@ -29,19 +28,29 @@ img{
 }
 
 
-.item{
+.itemz{
     grid-column-start: 2;
     grid-column-end: 3;
     border: solid darkgrey 3px;
-    OVERFLOW-Y:scroll;
+    
 }
 
+.item-1{
+    grid-column-start: 1;
+    grid-column-end: 2;
+}
 
 .item-2{
     grid-column-start: 2;
     grid-column-end: 3;
     border: solid darkgrey 3px;
     height: 400px;
-    OVERFLOW-Y:scroll;
+    
 
+}
+
+.Blank{
+    grid-column-start: 2;
+    grid-column-end: 3;
+    height: -webkit-fill-available;
 }

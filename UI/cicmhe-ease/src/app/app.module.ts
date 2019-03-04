@@ -26,6 +26,7 @@ import { HttpClientModule } from '@angular/common/http';
 import {MatExpansionModule} from '@angular/material/expansion'
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,6 +54,7 @@ import {MatExpansionModule} from '@angular/material/expansion'
     MatExpansionModule,
     HttpClientModule,
     CommonModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,4 +1,4 @@
-<div >
+<div class="results" >
     <h5>Found {{resultCount}} items for your search</h5>
     <mat-grid-list cols="2">
         <mat-grid-tile class="mat-grid-tile" *ngFor="let x of apiResponse">
@@ -10,14 +10,14 @@
                         <video controls (click)="toggleVideo()" id="videoPlayer">
                             <source
                                 src="https://s3.us-east-2.amazonaws.com/cichmedata/dist/assets/Data/{{x.company}}/{{x.assetID}}.mp4"
-                                onError="this.src='http://localhost:8081/NotFound.jpg';" type="video/mp4" />
+                                onError="this.src='https://s3.us-east-2.amazonaws.com/cichmedata/dist/assets/NotFound.jpg';" type="video/mp4" />
                         </video>
                     </div>
                     <div class="media"
                         *ngIf="x.fileType != 'mp4' && x.fileType != 'mkv' &&  x.fileType !='mov' &&  x.fileType !='flv' &&  x.fileType !='wmv'">
                         <img title="{{x.description}}"
                             src="https://s3.us-east-2.amazonaws.com/cichmedata/dist/assets/Data/{{x.company}}/{{x.assetID}}.{{x.fileType}}"
-                            onError="this.src='http://localhost:8081/NotFound.jpg';">
+                            onError="this.src='https://s3.us-east-2.amazonaws.com/cichmedata/dist/assets/NotFound.jpg';">
                     </div>
                 </div>
                 <div class="row productName">

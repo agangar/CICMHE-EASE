@@ -16,13 +16,9 @@ app.use(express.static(path.join(__dirname, 'dist/assets')));
 //passing all api requests to controller
 app.use('/api', controller);
 
-app.use('/js', express.static(__dirname + '/js'));
-app.use('/bower_components', express.static(__dirname + '/../bower_components'));
-app.use('/css', express.static(__dirname + '/css'));
-app.use('/partials', express.static(__dirname + '/partials'));
 app.get('/*', function(request, response,next){
 	console.log('Here');
-	response.sendFile(path.join(__dirname, 'dist/main.js'));
+	response.sendFile(path.join(__dirname, 'dist/index.html'));
 });
 
 

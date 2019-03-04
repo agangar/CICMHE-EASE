@@ -20,3 +20,12 @@ h4{
 .Not-Selected{
     filter: opacity(0.5);
 }
+
+.Lists{
+    height:430px;
+    OVERFLOW-Y:scroll;
+}
+
+.searchdetails{
+    height: 70px;
+}

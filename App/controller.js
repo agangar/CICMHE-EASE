@@ -11,7 +11,7 @@ const router = express.Router();
 // 	mongoClient.connect(constants.mongo_url, { useNewUrlParser: true }, (err, database) => {
 // 		if(err){
 // 			console.log('Error occured while trying to connect to database');
-// 			throw err;
+// 			console.log("Error occurred");
 // 		}
 // 		var db = database.db(constants.ease_db);
 // 		db.collection(constants.products_collection).find({}).toArray(function(error, x){
@@ -31,7 +31,7 @@ router.get('/search*',(request,response) =>{
 	mongoClient.connect(constants.mongo_url, { useNewUrlParser: true }, (err, database) => {
 		if(err){
 			console.log('Error occured while trying to connect to database');
-			throw err;
+			console.log("Error occurred");
 		}
 		var db = database.db(constants.ease_db);
 		var query={productName : request.query.query};
@@ -64,13 +64,13 @@ router.get('/filters', (request, response)=>{
 	mongoClient.connect(constants.mongo_url, { useNewUrlParser: true }, (err, database) => {
 		if(err){
 			console.log('Error occured while trying to connect to database');
-			throw err;
+			console.log("Error occurred");
 		}
 		var db = database.db(constants.ease_db);
 		var data=[];
 		data.push({taskName: "All Products", description: "Display all available products"});
 		db.collection("taskList").find().sort({taskName:1}).toArray(function(err, result) {
-			if (err) throw err;
+			if (err) console.log("Error occurred");
 			for(key in result) {
 				data.push(result[key]);
 			}
@@ -89,11 +89,11 @@ router.get('/allproducts', (request, response)=>{
 	mongoClient.connect(constants.mongo_url, { useNewUrlParser: true }, (err, database) => {
 		if(err){
 			console.log('Error occured while trying to connect to database');
-			throw err;
+			console.log("Error occurred");
 		}
 		var db = database.db(constants.ease_db);
 		db.collection(constants.matrix).distinct("productName", function(err, result) {
-			if (err) throw err;
+			if (err) console.log("Error occurred");
 			response.send(JSON.stringify(result));
 		});
 		
@@ -108,7 +108,7 @@ router.get('/resultProducts',(request,response) =>{
 	mongoClient.connect(constants.mongo_url, { useNewUrlParser: true }, (err, database) => {
 		if(err){
 			console.log('Error occured while trying to connect to database');
-			throw err;
+			console.log("Error occurred");
 		}
 		var db = database.db(constants.ease_db);
 		var query=request.query.query;
@@ -134,7 +134,7 @@ router.get('/productSearch',(request,response) =>{
 	mongoClient.connect(constants.mongo_url, { useNewUrlParser: true }, (err, database) => {
 		if(err){
 			console.log('Error occured while trying to connect to database');
-			throw err;
+			console.log("Error occurred");
 		}
 		var db = database.db(constants.ease_db);
 		var length=request.query.length;
@@ -164,7 +164,7 @@ router.get('/allProductSearch', (request, response)=>{
 	mongoClient.connect(constants.mongo_url, { useNewUrlParser: true }, (err, database) => {
 		if(err){
 			console.log('Error occured while trying to connect to database');
-			throw err;
+			console.log("Error occurred");
 		}
 		var db = database.db(constants.ease_db);
 		var skips=Number(request.query.pageSize)* Number(request.query.pageIndex);
@@ -172,7 +172,7 @@ router.get('/allProductSearch', (request, response)=>{
 		console.log(skips+" "+limits);
 		
 		db.collection(constants.products_collection).aggregate({$sort: {"company":1,"productName":1}},{ $limit: skips+limits },{ $skip: skips },{}).toArray(function(err, result) {
-			if (err) throw err;
+			if (err) console.log("Error occurred");
 			console.log(result);
 			for(var key in result){
 				result[key].company=result[key].company.toString().trim();
@@ -192,12 +192,12 @@ router.get('/companyList', (request, response)=>{
 	mongoClient.connect(constants.mongo_url, { useNewUrlParser: true }, (err, database) => {
 		if(err){
 			console.log('Error occured while trying to connect to database');
-			throw err;
+			console.log("Error occurred");
 		}
 		var db = database.db(constants.ease_db);
 		
 		db.collection(constants.company).find().sort({company:1}).toArray(function(err, result) {
-			if (err) throw err;
+			if (err) console.log("Error occurred");
 			for(var i=0;i<result.length;i++){
 				result[i].company=result[i].company.toString().trim();
 			}
@@ -215,12 +215,12 @@ router.get('/allProductsCount', (request, response)=>{
 	mongoClient.connect(constants.mongo_url, { useNewUrlParser: true }, (err, database) => {
 		if(err){
 			console.log('Error occured while trying to connect to database');
-			throw err;
+			console.log("Error occurred");
 		}
 		var db = database.db(constants.ease_db);
 		
 		db.collection(constants.products_collection).find().count(function(err, result){
-			if (err) throw err;
+			if (err) console.log("Error occurred");
 			response.send(JSON.stringify(result));
 		});
 		
@@ -237,7 +237,7 @@ router.get('/dropDownResultCount',(request,response) =>{
 	mongoClient.connect(constants.mongo_url, { useNewUrlParser: true }, (err, database) => {
 		if(err){
 			console.log('Error occured while trying to connect to database');
-			throw err;
+			console.log("Error occurred");
 		}
 		var db = database.db(constants.ease_db);
 		var query={productName : request.query.query};
@@ -267,7 +267,7 @@ router.get('/productCount',(request,response) =>{
 	mongoClient.connect(constants.mongo_url, { useNewUrlParser: true }, (err, database) => {
 		if(err){
 			console.log('Error occured while trying to connect to database');
-			throw err;
+			console.log("Error occurred");
 		}
 		var db = database.db(constants.ease_db);
 		var length=request.query.length;
@@ -290,7 +290,7 @@ router.get('/productCompanyList',(request,response) =>{
 	mongoClient.connect(constants.mongo_url, { useNewUrlParser: true }, (err, database) => {
 		if(err){
 			console.log('Error occured while trying to connect to database');
-			throw err;
+			console.log("Error occurred");
 		}
 		var db = database.db(constants.ease_db);
 		var length=request.query.length;

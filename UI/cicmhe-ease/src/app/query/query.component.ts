@@ -19,13 +19,9 @@ export class QueryComponent implements OnInit {
   }
 
 
-  public search() : void{
-    this.queryEmittor.emit([this.query,10,0,0]);
+  public onSelect(event) : void{
+    console.log(event);
+    this.queryEmittor.emit([event,10,0,0]);
   }
 
-  public handleEnter(keyCode: number) : void{
-    if(keyCode == 13){
-      this.search();
-    }
-  }
 }
